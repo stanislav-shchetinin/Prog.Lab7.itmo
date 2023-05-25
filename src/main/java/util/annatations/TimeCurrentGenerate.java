@@ -1,4 +1,4 @@
 package util.annatations;
 
-public @interface GenerateCurrentData {
+public @interface TimeCurrentGenerate {
 }

@@ -1,4 +1,4 @@
-package annatations;
+package util.annatations;
 
 public @interface NotNull {
 }

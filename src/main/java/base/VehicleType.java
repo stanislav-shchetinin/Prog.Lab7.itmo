@@ -1,2 +1,9 @@
-package base;public enum VehicleType {
+package base;
+
+public enum VehicleType {
+    CAR,
+    PLANE,
+    SUBMARINE,
+    BOAT,
+    BICYCLE;
 }

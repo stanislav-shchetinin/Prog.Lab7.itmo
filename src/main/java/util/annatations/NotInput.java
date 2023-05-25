@@ -1,2 +1,4 @@
-package util.annatations;public @interface NotInput {
+package util.annatations;
+
+public @interface NotInput {
 }
