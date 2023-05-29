@@ -43,7 +43,14 @@ public class VehicleBuilder {
             FieldBuilder fieldBuilder = new FieldBuilder(getterArgument, parent, mainField);
             while (true){
                 try {
-                    fieldBuilder.buildField();
+                    fieldBuilder
+                            .setNotInput()
+                            .inputField()
+                            .toDouble()
+                            .toLong()
+                            .toVehicleType()
+                            .handleAnnotationsOnField()
+                            .setField();
                     break;
                 } catch (IllegalArgumentException | IllegalAccessException e) {
                     log.warning(e.getMessage());

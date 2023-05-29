@@ -5,8 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2981cd97-83f0-46c9-ae74-fe3540fabf82" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/annatations/handler/FieldBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/annatations/handler/FieldBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/util/annatations/handler/HandlerAnnotations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/annatations/handler/HandlerAnnotations.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/util/builder/FieldBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/builder/FieldBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/util/builder/VehicleBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/builder/VehicleBuilder.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
