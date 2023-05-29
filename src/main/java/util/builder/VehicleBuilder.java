@@ -3,7 +3,7 @@ package util.builder;
 import aruments.*;
 import base.Vehicle;
 import lombok.extern.java.Log;
-import util.annatations.Input;
+import util.annatations.CheckIt;
 import util.annatations.NotInput;
 
 import java.lang.reflect.Field;
@@ -30,8 +30,7 @@ public class VehicleBuilder {
         boolean hasNotSystemField = false;
         Object mainFieldObject = null;
         for (Field field : mainField.getType().getDeclaredFields()){
-            if (field.isAnnotationPresent(NotInput.class) ||
-                field.isAnnotationPresent(Input.class)){
+            if (field.isAnnotationPresent(CheckIt.class)){
                 hasNotSystemField = true;
                 if (mainFieldObject == null){
                     mainFieldObject = mainField.getType().getConstructor().newInstance();

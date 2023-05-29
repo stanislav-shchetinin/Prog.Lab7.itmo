@@ -4,7 +4,6 @@ import lombok.*;
 import org.apache.commons.lang3.builder.CompareToBuilder;
 import util.annatations.*;
 
-import java.util.AbstractCollection;
 import java.util.UUID;
 @EqualsAndHashCode
 @NoArgsConstructor
@@ -16,16 +15,17 @@ public class Vehicle implements Comparable<Vehicle>{
     @NotNull
     @IdAutoGenerate
     @NotInput
+    @CheckIt
     @Getter
     private UUID id; //Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
-    @Input
     @NotNull
+    @CheckIt
     private String name; //Поле не может быть null, Строка не может быть пустой
 
-    @Input
+    @CheckIt
     @NotNull
     @Getter
-    private Coordinates coordinates = new Coordinates(); //Поле не может быть null
+    private Coordinates coordinates; //Поле не может быть null
 
     @NotNull
     @NotInput
@@ -36,22 +36,22 @@ public class Vehicle implements Comparable<Vehicle>{
     @PositiveNumber
     @NotZero
     @Getter
-    @Input
+    @CheckIt
     private Double enginePower; //Поле может быть null, Значение поля должно быть больше 0
 
     @PositiveNumber
     @NotZero
     @Getter
-    @Input
+    @CheckIt
     private Double capacity; //Значение поля должно быть больше 0
 
     @PositiveNumber
     @NotZero
-    @Input
+    @CheckIt
     private Double distanceTravelled; //Значение поля должно быть больше 0
 
     @NotNull
-    @Input
+    @CheckIt
     private VehicleType type; //Поле не может быть null
 
     @Override
