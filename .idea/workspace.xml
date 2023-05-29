@@ -5,13 +5,53 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2981cd97-83f0-46c9-ae74-fe3540fabf82" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/aruments/ConsoleGetterArgument.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/aruments/FactoryGettersArgument.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/aruments/FileGetterArgument.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/aruments/GetterArgument.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/aruments/WayGetArgument.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/collection/CollectionDirector.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/commands/Add.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/commands/AddIfMax.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/commands/AddIfMin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/commands/Clear.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/commands/CountByCapacity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/commands/ExecuteScript.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/commands/Exit.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/commands/Help.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/commands/Info.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/commands/PrintAscending.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/commands/PrintUniqueEnginePower.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/commands/RemoveById.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/commands/RemoveFirst.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/commands/Save.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/commands/Show.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/commands/UpdateId.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/commands/auxiliary/Command.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/commands/auxiliary/Description.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/exceptions/CollectionException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/util/GlobalGenerate.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/util/annatations/Input.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/util/annatations/handler/FieldBuilder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/util/annatations/handler/HandlerAnnotations.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/util/builder/VehicleBuilder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/util/constants/ConstantsForCommandsDescription.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/util/constants/ConstantsForCommandsName.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/util/constants/ConstantsForConsoleFormatInput.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/util/constants/ConstantsForExceptions.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/util/constants/ConstantsForFieldBuilder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/annatations/GenerateCurrentData.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/annatations/Id.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/annatations/IdAutoGenerate.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/annatations/MaxValue.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/annatations/MinValue.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/annatations/NotNull.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/annatations/NotZero.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/annatations/PositiveNumber.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/base/Coordinates.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/base/Coordinates.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/base/Vehicle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/base/Vehicle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/base/VehicleType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/base/VehicleType.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/util/annatations/Id.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/annatations/Id.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/util/annatations/IdAutoGenerate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/annatations/IdAutoGenerate.java" afterDir="false" />
@@ -22,7 +62,6 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/util/annatations/NotZero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/annatations/NotZero.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/util/annatations/PositiveNumber.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/annatations/PositiveNumber.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/util/annatations/TimeCurrentGenerate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/annatations/TimeCurrentGenerate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/constants/ConstantsForBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/constants/ConstantsForBase.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,9 +71,10 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Enum" />
-        <option value="Class" />
         <option value="AnnotationType" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -50,18 +90,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "C:/ЛабораторныеРаботы/2сем/Программирование/ЛР6/Lab6"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/ЛабораторныеРаботы/2сем/Программирование/ЛР7/Lab7/src/main/java/commands&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\ЛабораторныеРаботы\2сем\Программирование\ЛР7\Lab7\src\main\java\commands" />
       <recent name="C:\ЛабораторныеРаботы\2сем\Программирование\ЛР7\Lab7\src\main\java\util" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Main" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="org.example.Main" />
+      <module name="Lab7" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">

@@ -1,0 +1,33 @@
+package commands;
+
+import commands.auxiliary.Command;
+import lombok.extern.java.Log;
+
+import static util.constants.ConstantsForCommandsDescription.DESCRIPTION_EXIT;
+import static util.constants.ConstantsForCommandsName.NAME_EXIT;
+
+/**
+ * Класс завершения программы: exit<p>
+ * Реализует класс Command, чтобы можно было вызывать выполнение команды<p>
+ * Реализует маркировочный интерфейс NoArgument, чтобы можно было проверить какие аргументы принимает команда (без аргументов)<p>
+ * Аннотация @Log создает поле логгера
+ * */
+@Log
+public class Exit implements Command {
+
+    @Override
+    public void execute() {
+        log.info("Вызвана команда exit. Программа завершает выполнение");
+        System.exit(0);
+    }
+
+    @Override
+    public String name() {
+        return NAME_EXIT;
+    }
+
+    @Override
+    public String description() {
+        return DESCRIPTION_EXIT;
+    }
+}
