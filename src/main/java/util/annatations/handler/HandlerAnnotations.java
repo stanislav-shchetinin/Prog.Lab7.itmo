@@ -24,7 +24,6 @@ public class HandlerAnnotations {
         handleMinValue();
         handleNotZero();
         handlePositiveNumber();
-        handleNotNull();
     }
 
     private void handlerIdAutoGenerate() throws IllegalArgumentException, IllegalAccessException {

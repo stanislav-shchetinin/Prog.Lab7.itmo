@@ -5,7 +5,6 @@ import base.Vehicle;
 import lombok.extern.java.Log;
 import util.annatations.Input;
 import util.annatations.NotInput;
-import util.annatations.handler.FieldBuilder;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
