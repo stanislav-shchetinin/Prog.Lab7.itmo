@@ -2,7 +2,7 @@ package base;
 
 import lombok.*;
 import org.apache.commons.lang3.builder.CompareToBuilder;
-import util.annatations.*;
+import util.annatations.vehicle.*;
 
 import java.util.UUID;
 @EqualsAndHashCode

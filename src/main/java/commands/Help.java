@@ -3,6 +3,7 @@ package commands;
 import commands.auxiliary.Command;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import util.annatations.command.SetInCommand;
 
 import java.util.ArrayList;
 
@@ -17,6 +18,7 @@ import static util.constants.ConstantsForCommandsName.NAME_HELP;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Help implements Command {
+    @SetInCommand
     ArrayList<Command> listCommands;
 
     @Override

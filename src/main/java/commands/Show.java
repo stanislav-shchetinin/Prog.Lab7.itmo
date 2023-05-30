@@ -6,6 +6,7 @@ import commands.auxiliary.Command;
 import exceptions.CollectionException;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import util.annatations.command.SetInCommand;
 
 import java.util.AbstractCollection;
 
@@ -20,6 +21,7 @@ import static util.constants.ConstantsForCommandsName.NAME_SHOW;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Show implements Command {
+    @SetInCommand
     private CollectionDirector<? extends AbstractCollection<Vehicle>> collectionDirector;
 
     @Override
@@ -29,11 +31,11 @@ public class Show implements Command {
 
     @Override
     public String description() {
-        return NAME_SHOW;
+        return DESCRIPTION_SHOW;
     }
 
     @Override
     public String name() {
-        return DESCRIPTION_SHOW;
+        return NAME_SHOW;
     }
 }

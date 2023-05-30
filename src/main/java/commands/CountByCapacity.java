@@ -2,9 +2,11 @@ package commands;
 
 import base.Vehicle;
 import collection.CollectionDirector;
+import util.annatations.command.Input;
 import commands.auxiliary.Command;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import util.annatations.command.SetInCommand;
 
 import java.util.AbstractCollection;
 
@@ -20,7 +22,9 @@ import static util.constants.ConstantsForCommandsName.NAME_COUNT_BY_CAPACITY;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CountByCapacity implements Command {
+    @SetInCommand
     private CollectionDirector<? extends AbstractCollection<Vehicle>> collectionDirector;
+    @Input
     private Double capacity;
 
     @Override

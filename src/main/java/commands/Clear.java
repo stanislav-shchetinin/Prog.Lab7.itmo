@@ -5,6 +5,7 @@ import collection.CollectionDirector;
 import commands.auxiliary.Command;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import util.annatations.command.SetInCommand;
 
 import java.util.AbstractCollection;
 
@@ -14,6 +15,7 @@ import static util.constants.ConstantsForCommandsName.NAME_CLEAR;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Clear implements Command {
+    @SetInCommand
     private CollectionDirector<? extends AbstractCollection<Vehicle>> collectionDirector;
 
     @Override

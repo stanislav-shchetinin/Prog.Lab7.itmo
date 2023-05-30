@@ -5,6 +5,7 @@ import collection.CollectionDirector;
 import commands.auxiliary.Command;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import util.annatations.command.SetInCommand;
 
 import java.util.AbstractCollection;
 
@@ -19,6 +20,7 @@ import static util.constants.ConstantsForCommandsName.NAME_PRINT_UNIQUE_ENGINE_P
 @NoArgsConstructor
 @AllArgsConstructor
 public class PrintUniqueEnginePower implements Command {
+    @SetInCommand
     private CollectionDirector<? extends AbstractCollection<Vehicle>> collectionDirector;
 
     @Override

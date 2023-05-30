@@ -5,6 +5,8 @@ import collection.CollectionDirector;
 import commands.auxiliary.Command;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import util.annatations.command.Input;
+import util.annatations.command.SetInCommand;
 
 import java.nio.file.Path;
 import java.util.AbstractCollection;
@@ -23,11 +25,15 @@ import static util.constants.ConstantsForCommandsName.NAME_EXECUTE_SCRIPT;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ExecuteScript implements Command {
-    private Path script;
-    private Path fileForSave;
+    @SetInCommand
     private CollectionDirector<? extends AbstractCollection<Vehicle>> collectionDirector;
     private HashSet<String> namesFiles;
+    @SetInCommand
     private HashMap<String, Command> mapCommand;
+    @Input
+    private Path script;
+    @SetInCommand
+    private Path fileForSave;
 
     @Override
     public void execute() {

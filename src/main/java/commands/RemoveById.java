@@ -5,6 +5,8 @@ import collection.CollectionDirector;
 import commands.auxiliary.Command;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import util.annatations.command.Input;
+import util.annatations.command.SetInCommand;
 
 import java.util.AbstractCollection;
 import java.util.UUID;
@@ -21,7 +23,9 @@ import static util.constants.ConstantsForCommandsName.NAME_REMOVE_BY_ID;
 @NoArgsConstructor
 @AllArgsConstructor
 public class RemoveById implements Command {
+    @SetInCommand
     private CollectionDirector<? extends AbstractCollection<Vehicle>> collectionDirector;
+    @Input
     private UUID id;
 
     @Override

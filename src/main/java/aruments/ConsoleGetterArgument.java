@@ -1,6 +1,5 @@
 package aruments;
 
-import base.Coordinates;
 import base.VehicleType;
 
 import java.lang.reflect.Field;
@@ -10,11 +9,22 @@ import static util.constants.ConstantsForConsoleFormatInput.*;
 
 public class ConsoleGetterArgument implements GetterArgument{
 
+    Scanner scanner;
+    public ConsoleGetterArgument(){
+        scanner = new Scanner(System.in);
+    }
+
     @Override
-    public String getArgument(Field field) {
+    public String getFieldArgument(Field field) {
         Scanner scanner = new Scanner(System.in);
         System.out.println(formatInput(field) + inviteToInput(field));
         return scanner.next();
+    }
+
+    @Override
+    public String[] getCommandArgument() {
+        String[] args = scanner.nextLine().split(" ");
+        return args;
     }
 
     private String formatInput(Field field){

@@ -5,6 +5,8 @@ import collection.CollectionDirector;
 import commands.auxiliary.Command;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import util.annatations.command.Input;
+import util.annatations.command.SetInCommand;
 
 import java.util.AbstractCollection;
 import java.util.UUID;
@@ -22,10 +24,12 @@ import static util.constants.ConstantsForCommandsName.NAME_UPDATE_ID;
 @AllArgsConstructor
 @NoArgsConstructor
 public class UpdateId implements Command {
-
+    @SetInCommand
     private CollectionDirector<? extends AbstractCollection<Vehicle>> collectionDirector;
-    private Vehicle vehicle;
+    @Input
     private UUID id;
+    @Input
+    private Vehicle vehicle;
 
     @Override
     public void execute() {
@@ -34,11 +38,11 @@ public class UpdateId implements Command {
 
     @Override
     public String description() {
-        return NAME_UPDATE_ID;
+        return DESCRIPTION_UPDATE_ID;
     }
 
     @Override
     public String name() {
-        return DESCRIPTION_UPDATE_ID;
+        return NAME_UPDATE_ID;
     }
 }

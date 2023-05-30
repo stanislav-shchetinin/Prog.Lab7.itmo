@@ -1,4 +1,4 @@
-package util.annatations;
+package util.annatations.vehicle;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

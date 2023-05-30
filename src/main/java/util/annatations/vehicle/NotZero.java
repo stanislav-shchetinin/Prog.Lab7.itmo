@@ -1,4 +1,4 @@
-package util.annatations;
+package util.annatations.vehicle;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -7,5 +7,5 @@ import java.lang.annotation.Target;
 
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface PositiveNumber {
+public @interface NotZero {
 }

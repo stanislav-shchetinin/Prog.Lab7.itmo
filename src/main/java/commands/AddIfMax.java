@@ -5,6 +5,8 @@ import collection.CollectionDirector;
 import commands.auxiliary.Command;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import util.annatations.command.Input;
+import util.annatations.command.SetInCommand;
 
 import java.util.AbstractCollection;
 
@@ -19,7 +21,9 @@ import static util.constants.ConstantsForCommandsName.NAME_ADD_IF_MAX;
 @NoArgsConstructor
 @AllArgsConstructor
 public class AddIfMax implements Command {
+    @SetInCommand
     private CollectionDirector<? extends AbstractCollection<Vehicle>> collectionDirector;
+    @Input
     private Vehicle vehicle;
 
     @Override

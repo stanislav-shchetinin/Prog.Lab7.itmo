@@ -3,8 +3,7 @@ package util.builder;
 import aruments.*;
 import base.Vehicle;
 import lombok.extern.java.Log;
-import util.annatations.CheckIt;
-import util.annatations.NotInput;
+import util.annatations.vehicle.CheckIt;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
@@ -13,16 +12,32 @@ import java.lang.reflect.InvocationTargetException;
 public class VehicleBuilder {
     Vehicle vehicle;
     GetterArgument getterArgument;
+    WayGetArgument wayGetArgument;
 
     public VehicleBuilder(WayGetArgument wayGetArgument){
-        vehicle = new Vehicle();
-        getterArgument = new FactoryGettersArgument(wayGetArgument).getGetterArgument();
+        this.getterArgument = new FactoryGettersArgument(wayGetArgument).getGetterArgument();
+        this.wayGetArgument = wayGetArgument;
+    }
+    public VehicleBuilder(GetterArgument getterArgument){
+        this.getterArgument = getterArgument;
     }
 
-    public void buildVehicle() throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
+    public void createVehicle(){
+        this.vehicle = new Vehicle();
+    }
+
+    public void buildVehicle() {
         for (Field field : Vehicle.class.getDeclaredFields()) {
-            field.setAccessible(true);
-            recursionInField(field, vehicle);
+            try {
+                field.setAccessible(true);
+                recursionInField(field, vehicle);
+            } catch (NoSuchMethodException |
+                    InvocationTargetException |
+                    InstantiationException |
+                     IllegalAccessException e){
+                log.warning(e.getMessage());
+            }
+
         }
     }
 
