@@ -1,7 +1,7 @@
-package aruments;
+package util.arguments;
 
 public class FactoryGettersArgument {
-    GetterArgument getterArgument;
+    private final GetterArgument getterArgument;
 
     public FactoryGettersArgument(WayGetArgument wayGetArgument){
         if (wayGetArgument.equals(WayGetArgument.CONSOLE)){

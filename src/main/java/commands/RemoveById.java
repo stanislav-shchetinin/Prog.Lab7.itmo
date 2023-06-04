@@ -5,6 +5,8 @@ import collection.CollectionDirector;
 import commands.auxiliary.Command;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import lombok.extern.java.Log;
+import util.annatations.command.CollectionDirectorAnnotation;
 import util.annatations.command.Input;
 import util.annatations.command.SetInCommand;
 
@@ -22,25 +24,30 @@ import static util.constants.ConstantsForCommandsName.NAME_REMOVE_BY_ID;
  * */
 @NoArgsConstructor
 @AllArgsConstructor
+@Log
 public class RemoveById implements Command {
-    @SetInCommand
+    @CollectionDirectorAnnotation
     private CollectionDirector<? extends AbstractCollection<Vehicle>> collectionDirector;
     @Input
     private UUID id;
 
     @Override
     public void execute() {
-        collectionDirector.removeById(id);
+        try {
+            collectionDirector.removeById(id);
+        } catch (IllegalArgumentException e){
+            log.warning(e.getMessage());
+        }
     }
 
     @Override
     public String description() {
-        return NAME_REMOVE_BY_ID;
+        return DESCRIPTION_REMOVE_BY_ID;
     }
 
     @Override
     public String name() {
-        return DESCRIPTION_REMOVE_BY_ID;
+        return NAME_REMOVE_BY_ID;
     }
 
 }

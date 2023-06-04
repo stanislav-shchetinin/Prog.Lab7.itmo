@@ -1,16 +1,15 @@
 package org.example;
 
-import aruments.WayGetArgument;
+import commands.executor.CommandExecutor;
+import util.arguments.WayGetArgument;
 import base.Vehicle;
 import collection.CollectionDirector;
-import commands.Add;
 import commands.auxiliary.Command;
-import commands.executor.CommandInput;
+import util.builders.CommandBuilder;
+import util.builders.CommandInput;
 import util.GlobalGenerate;
-import util.builder.VehicleBuilder;
+import util.builders.VehicleBuilder;
 
-import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
 import java.util.*;
 
 public class Main {
@@ -20,16 +19,16 @@ public class Main {
         ArrayList<Command> listCommands = GlobalGenerate.getListCommands();
         HashMap<String, Command> hashMap = GlobalGenerate.getMapCommands(listCommands);
         //В командах пометить аннотациями поля, которые нужны для .execute(), чтобы они сами вводились при выборе команды
-        VehicleBuilder vehicleBuilder = new VehicleBuilder(WayGetArgument.CONSOLE);
-        vehicleBuilder.createVehicle();
-        vehicleBuilder.buildVehicle();
-        System.out.println(vehicleBuilder.getVehicle());
-        CommandInput commandInput = new CommandInput(WayGetArgument.CONSOLE, hashMap);
-        //  через reflection api интегрировать для command executor аргументы (commandDirector и т.д.)
-        try {
-            commandInput.inputCommand();
-        } catch (IllegalAccessException e) {
-            throw new RuntimeException(e);
+
+        while (true){
+            try {
+                CommandBuilder commandBuilder = new CommandBuilder(WayGetArgument.CONSOLE, hashMap, listCommands);
+                commandBuilder.buildCommand();
+                CommandExecutor commandExecutor = new CommandExecutor(collectionDirector, commandBuilder.getCommand());
+                commandExecutor.executeCommand();
+            } catch (IllegalAccessException e) {
+                System.out.println(e.getMessage());
+            }
         }
 
     }

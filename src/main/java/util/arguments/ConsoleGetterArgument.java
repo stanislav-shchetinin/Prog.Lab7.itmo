@@ -1,4 +1,4 @@
-package aruments;
+package util.arguments;
 
 import base.VehicleType;
 
@@ -9,7 +9,7 @@ import static util.constants.ConstantsForConsoleFormatInput.*;
 
 public class ConsoleGetterArgument implements GetterArgument{
 
-    Scanner scanner;
+    private final Scanner scanner;
     public ConsoleGetterArgument(){
         scanner = new Scanner(System.in);
     }

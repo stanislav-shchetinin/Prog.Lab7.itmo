@@ -1,14 +1,12 @@
-package commands.executor;
+package util.builders;
 
-import aruments.FactoryGettersArgument;
-import aruments.GetterArgument;
-import aruments.WayGetArgument;
+import util.arguments.FactoryGettersArgument;
+import util.arguments.GetterArgument;
+import util.arguments.WayGetArgument;
 import base.Vehicle;
 import util.annatations.command.Input;
 import commands.auxiliary.Command;
 import lombok.extern.java.Log;
-import util.builder.FieldBuilder;
-import util.builder.VehicleBuilder;
 
 import java.lang.reflect.Field;
 import java.util.HashMap;

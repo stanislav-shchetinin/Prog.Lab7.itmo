@@ -5,6 +5,8 @@ import collection.CollectionDirector;
 import commands.auxiliary.Command;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import lombok.extern.java.Log;
+import util.annatations.command.CollectionDirectorAnnotation;
 import util.annatations.command.Input;
 import util.annatations.command.SetInCommand;
 
@@ -23,8 +25,9 @@ import static util.constants.ConstantsForCommandsName.NAME_UPDATE_ID;
  * */
 @AllArgsConstructor
 @NoArgsConstructor
+@Log
 public class UpdateId implements Command {
-    @SetInCommand
+    @CollectionDirectorAnnotation
     private CollectionDirector<? extends AbstractCollection<Vehicle>> collectionDirector;
     @Input
     private UUID id;
@@ -33,7 +36,11 @@ public class UpdateId implements Command {
 
     @Override
     public void execute() {
-        collectionDirector.updateById(vehicle, id);
+        try {
+            collectionDirector.updateById(vehicle, id);
+        } catch (IllegalArgumentException e){
+            log.warning(e.getMessage());
+        }
     }
 
     @Override

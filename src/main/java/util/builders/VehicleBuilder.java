@@ -1,22 +1,23 @@
-package util.builder;
+package util.builders;
 
-import aruments.*;
 import base.Vehicle;
 import lombok.extern.java.Log;
 import util.annatations.vehicle.CheckIt;
+import util.arguments.FactoryGettersArgument;
+import util.arguments.GetterArgument;
+import util.arguments.WayGetArgument;
+import util.builders.FieldBuilder;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 
 @Log
 public class VehicleBuilder {
-    Vehicle vehicle;
-    GetterArgument getterArgument;
-    WayGetArgument wayGetArgument;
+    private Vehicle vehicle;
+    private final GetterArgument getterArgument;
 
     public VehicleBuilder(WayGetArgument wayGetArgument){
         this.getterArgument = new FactoryGettersArgument(wayGetArgument).getGetterArgument();
-        this.wayGetArgument = wayGetArgument;
     }
     public VehicleBuilder(GetterArgument getterArgument){
         this.getterArgument = getterArgument;

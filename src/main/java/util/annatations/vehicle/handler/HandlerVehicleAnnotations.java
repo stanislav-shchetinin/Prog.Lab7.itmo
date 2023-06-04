@@ -13,10 +13,10 @@ import static util.constants.ConstantsForFieldBuilder.*;
  * */
 @AllArgsConstructor
 public class HandlerVehicleAnnotations {
-    Field field;
-    Object parent;
-    boolean isNotInput;
-    Object value;
+    private Field field;
+    private Object parent;
+    private boolean isNotInput;
+    private Object value;
 
     public HandlerVehicleAnnotations handlerIdAutoGenerate() throws IllegalArgumentException, IllegalAccessException {
         if (field.isAnnotationPresent(IdAutoGenerate.class) && isNotInput){

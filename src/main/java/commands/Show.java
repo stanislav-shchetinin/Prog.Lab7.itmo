@@ -6,6 +6,7 @@ import commands.auxiliary.Command;
 import exceptions.CollectionException;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import util.annatations.command.CollectionDirectorAnnotation;
 import util.annatations.command.SetInCommand;
 
 import java.util.AbstractCollection;
@@ -21,7 +22,7 @@ import static util.constants.ConstantsForCommandsName.NAME_SHOW;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Show implements Command {
-    @SetInCommand
+    @CollectionDirectorAnnotation
     private CollectionDirector<? extends AbstractCollection<Vehicle>> collectionDirector;
 
     @Override

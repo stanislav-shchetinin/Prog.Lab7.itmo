@@ -5,6 +5,7 @@ import collection.CollectionDirector;
 import commands.auxiliary.Command;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import util.annatations.command.CollectionDirectorAnnotation;
 import util.annatations.command.SetInCommand;
 
 import java.util.AbstractCollection;
@@ -20,7 +21,7 @@ import static util.constants.ConstantsForCommandsName.NAME_PRINT_ASCENDING;
 @NoArgsConstructor
 @AllArgsConstructor
 public class PrintAscending implements Command {
-    @SetInCommand
+    @CollectionDirectorAnnotation
     private CollectionDirector<? extends AbstractCollection<Vehicle>> collectionDirector;
 
     @Override
@@ -30,11 +31,11 @@ public class PrintAscending implements Command {
 
     @Override
     public String description() {
-        return NAME_PRINT_ASCENDING;
+        return DESCRIPTION_PRINT_ASCENDING;
     }
 
     @Override
     public String name() {
-        return DESCRIPTION_PRINT_ASCENDING;
+        return NAME_PRINT_ASCENDING;
     }
 }

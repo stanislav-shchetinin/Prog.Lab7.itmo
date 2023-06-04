@@ -1,4 +1,4 @@
-package aruments;
+package util.arguments;
 
 import java.lang.reflect.Field;
 

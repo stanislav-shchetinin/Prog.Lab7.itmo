@@ -1,6 +1,4 @@
-package aruments;
-
-import commands.auxiliary.Command;
+package util.arguments;
 
 import java.lang.reflect.Field;
 

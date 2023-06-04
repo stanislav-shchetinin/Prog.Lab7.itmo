@@ -5,6 +5,7 @@ import collection.CollectionDirector;
 import commands.auxiliary.Command;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import util.annatations.command.CollectionDirectorAnnotation;
 import util.annatations.command.SetInCommand;
 
 import java.util.AbstractCollection;
@@ -20,7 +21,7 @@ import static util.constants.ConstantsForCommandsName.NAME_PRINT_UNIQUE_ENGINE_P
 @NoArgsConstructor
 @AllArgsConstructor
 public class PrintUniqueEnginePower implements Command {
-    @SetInCommand
+    @CollectionDirectorAnnotation
     private CollectionDirector<? extends AbstractCollection<Vehicle>> collectionDirector;
 
     @Override
@@ -30,11 +31,11 @@ public class PrintUniqueEnginePower implements Command {
 
     @Override
     public String description() {
-        return NAME_PRINT_UNIQUE_ENGINE_POWER;
+        return DESCRIPTION_UNIQUE_ENGINE_POWER;
     }
 
     @Override
     public String name() {
-        return DESCRIPTION_UNIQUE_ENGINE_POWER;
+        return NAME_PRINT_UNIQUE_ENGINE_POWER;
     }
 }

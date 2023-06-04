@@ -3,19 +3,24 @@ package collection;
 import base.Vehicle;
 import exceptions.CollectionException;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.*;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
-import static util.constants.ConstantsForExceptions.REMOVE_FROM_EMPTY_COLLECTION;
+import static util.constants.ConstantsForCollectionDirector.NO_SUCH_ID;
+import static util.constants.ConstantsForCollectionDirector.REMOVE_FROM_EMPTY_COLLECTION;
 
 public class CollectionDirector<T extends AbstractCollection<Vehicle>> {
     private T collection;
     private HashSet<UUID> uuidHashSet;
     private final Date date;
     private final Supplier<T> TFactory = ()->{
-        collection.clear();
-        return collection;
+        try {
+            return (T) collection.getClass().getConstructor().newInstance(); //Кажется не лучшее решение, особенно смущает небезопасный каст
+        } catch (InstantiationException | IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
+            throw new RuntimeException(e);
+        }
     };
     public CollectionDirector (T collection) {
         this.collection = collection;
@@ -66,6 +71,7 @@ public class CollectionDirector<T extends AbstractCollection<Vehicle>> {
     }
 
     public void removeById (UUID id){
+        checkId(id);
         uuidHashSet.remove(id);
         collection = collection.stream().filter(x -> !x.getId().equals(id))
                 .collect(Collectors.toCollection(TFactory));
@@ -84,6 +90,7 @@ public class CollectionDirector<T extends AbstractCollection<Vehicle>> {
     }
 
     public void updateById(Vehicle vehicle, UUID id){
+        // Не требуется проверять id, т.к. я это делаю уже в removeById
         removeById(id);
         add(vehicle);
         vehicle.setId(id);
@@ -103,6 +110,12 @@ public class CollectionDirector<T extends AbstractCollection<Vehicle>> {
         if (collection.size() == 0 || vehicle.compareTo(vehicleFirst) < 0){
             collection.add(vehicle);
             uuidHashSet.add(vehicle.getId());
+        }
+    }
+
+    private void checkId (UUID id){
+        if (!uuidHashSet.contains(id)){
+            throw new IllegalArgumentException(NO_SUCH_ID);
         }
     }
 

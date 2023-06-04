@@ -1,4 +1,4 @@
-package aruments;
+package util.arguments;
 
 public enum WayGetArgument {
     CONSOLE,

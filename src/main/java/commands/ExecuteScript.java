@@ -5,6 +5,7 @@ import collection.CollectionDirector;
 import commands.auxiliary.Command;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import util.annatations.command.CollectionDirectorAnnotation;
 import util.annatations.command.Input;
 import util.annatations.command.SetInCommand;
 
@@ -25,7 +26,7 @@ import static util.constants.ConstantsForCommandsName.NAME_EXECUTE_SCRIPT;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ExecuteScript implements Command {
-    @SetInCommand
+    @CollectionDirectorAnnotation
     private CollectionDirector<? extends AbstractCollection<Vehicle>> collectionDirector;
     private HashSet<String> namesFiles;
     @SetInCommand

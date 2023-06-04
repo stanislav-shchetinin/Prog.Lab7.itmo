@@ -1,8 +1,6 @@
-package util.builder;
+package util.builders;
 
-import aruments.FactoryGettersArgument;
-import aruments.GetterArgument;
-import aruments.WayGetArgument;
+import util.arguments.GetterArgument;
 import base.VehicleType;
 import util.annatations.vehicle.handler.HandlerVehicleAnnotations;
 import util.annatations.vehicle.NotInput;
@@ -13,19 +11,11 @@ import java.util.UUID;
 import static util.constants.ConstantsForFieldBuilder.*;
 
 public class FieldBuilder {
-    Object parent;
-    Field field;
-    GetterArgument getterArgument;
-    Object value;
-    boolean isNotInput;
-
-    public FieldBuilder(WayGetArgument wayGetArgument, Object parent, Field field){
-        this.parent = parent;
-        this.field = field;
-        this.getterArgument = new FactoryGettersArgument(wayGetArgument).getGetterArgument();
-        field.setAccessible(true);
-    }
-
+    private final Object parent;
+    private final Field field;
+    private GetterArgument getterArgument;
+    private Object value;
+    private boolean isNotInput;
     public FieldBuilder(GetterArgument getterArgument, Object parent, Field field){
         this.parent = parent;
         this.field = field;

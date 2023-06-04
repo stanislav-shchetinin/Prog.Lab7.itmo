@@ -6,6 +6,7 @@ import commands.auxiliary.Command;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.extern.java.Log;
+import util.annatations.command.CollectionDirectorAnnotation;
 import util.annatations.command.SetInCommand;
 
 import java.nio.file.Path;
@@ -24,7 +25,7 @@ import static util.constants.ConstantsForCommandsName.NAME_SAVE;
 @AllArgsConstructor
 @Log
 public class Save implements Command {
-    @SetInCommand
+    @CollectionDirectorAnnotation
     private CollectionDirector<? extends AbstractCollection<Vehicle>> collectionDirector;
     @SetInCommand
     private Path file;
@@ -36,11 +37,11 @@ public class Save implements Command {
 
     @Override
     public String description() {
-        return NAME_SAVE;
+        return DESCRIPTION_SAVE;
     }
 
     @Override
     public String name() {
-        return DESCRIPTION_SAVE;
+        return NAME_SAVE;
     }
 }

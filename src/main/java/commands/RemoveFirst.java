@@ -7,6 +7,7 @@ import exceptions.CollectionException;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.extern.java.Log;
+import util.annatations.command.CollectionDirectorAnnotation;
 import util.annatations.command.SetInCommand;
 
 import java.util.AbstractCollection;
@@ -23,7 +24,7 @@ import static util.constants.ConstantsForCommandsName.NAME_REMOVE_FIRST;
 @AllArgsConstructor
 @Log
 public class RemoveFirst implements Command {
-    @SetInCommand
+    @CollectionDirectorAnnotation
     private CollectionDirector<? extends AbstractCollection<Vehicle>> collectionDirector;
 
     @Override
@@ -37,11 +38,11 @@ public class RemoveFirst implements Command {
 
     @Override
     public String description() {
-        return NAME_REMOVE_FIRST;
+        return DESCRIPTION_REMOVE_FIRST;
     }
 
     @Override
     public String name() {
-        return DESCRIPTION_REMOVE_FIRST;
+        return NAME_REMOVE_FIRST;
     }
 }
