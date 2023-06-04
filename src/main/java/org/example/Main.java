@@ -6,10 +6,10 @@ import base.Vehicle;
 import collection.CollectionDirector;
 import commands.auxiliary.Command;
 import util.builders.CommandBuilder;
-import util.builders.CommandInput;
 import util.GlobalGenerate;
-import util.builders.VehicleBuilder;
+import util.PathGetter;
 
+import java.nio.file.Path;
 import java.util.*;
 
 public class Main {
@@ -18,8 +18,7 @@ public class Main {
                 new CollectionDirector<>(new PriorityQueue<>());
         ArrayList<Command> listCommands = GlobalGenerate.getListCommands();
         HashMap<String, Command> hashMap = GlobalGenerate.getMapCommands(listCommands);
-        //В командах пометить аннотациями поля, которые нужны для .execute(), чтобы они сами вводились при выборе команды
-
+        Path path = PathGetter.getPathFileCollection();
         while (true){
             try {
                 CommandBuilder commandBuilder = new CommandBuilder(WayGetArgument.CONSOLE, hashMap, listCommands);

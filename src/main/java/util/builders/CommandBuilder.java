@@ -1,6 +1,7 @@
 package util.builders;
 
 import commands.auxiliary.Command;
+import lombok.Getter;
 import lombok.extern.java.Log;
 import util.annatations.command.SetInCommand;
 import util.arguments.WayGetArgument;
@@ -14,6 +15,7 @@ import static util.constants.ConstantsForGlobal.FILE_NAME;
 
 @Log
 public class CommandBuilder {
+    @Getter
     private Command command;
     private HashMap<String, Command> commandHashMap;
     private CommandInput commandInput;
@@ -28,7 +30,7 @@ public class CommandBuilder {
         this.listCommands = listCommands;
     }
 
-    public void buildCommand() throws IllegalArgumentException, IllegalAccessException{
+    public void buildCommand() throws IllegalAccessException{
         command = commandInput.inputCommand();
         for (Field fieldCommand : command.getClass().getDeclaredFields()){
             if (fieldCommand.isAnnotationPresent(SetInCommand.class)){
@@ -40,9 +42,5 @@ public class CommandBuilder {
                 }
             }
         }
-    }
-
-    public Command getCommand() {
-        return command;
     }
 }

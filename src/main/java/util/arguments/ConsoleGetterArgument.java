@@ -16,7 +16,6 @@ public class ConsoleGetterArgument implements GetterArgument{
 
     @Override
     public String getFieldArgument(Field field) {
-        Scanner scanner = new Scanner(System.in);
         System.out.println(formatInput(field) + inviteToInput(field));
         return scanner.next();
     }

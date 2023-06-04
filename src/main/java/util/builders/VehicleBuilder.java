@@ -1,6 +1,7 @@
 package util.builders;
 
 import base.Vehicle;
+import lombok.Getter;
 import lombok.extern.java.Log;
 import util.annatations.vehicle.CheckIt;
 import util.arguments.FactoryGettersArgument;
@@ -13,12 +14,9 @@ import java.lang.reflect.InvocationTargetException;
 
 @Log
 public class VehicleBuilder {
+    @Getter
     private Vehicle vehicle;
     private final GetterArgument getterArgument;
-
-    public VehicleBuilder(WayGetArgument wayGetArgument){
-        this.getterArgument = new FactoryGettersArgument(wayGetArgument).getGetterArgument();
-    }
     public VehicleBuilder(GetterArgument getterArgument){
         this.getterArgument = getterArgument;
     }
@@ -74,9 +72,5 @@ public class VehicleBuilder {
         } else {
             mainField.set(parent, mainFieldObject);
         }
-    }
-
-    public Vehicle getVehicle(){
-        return vehicle;
     }
 }
