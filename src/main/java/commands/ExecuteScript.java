@@ -30,11 +30,11 @@ public class ExecuteScript implements Command {
     private CollectionDirector<? extends AbstractCollection<Vehicle>> collectionDirector;
     private HashSet<String> namesFiles;
     @SetInCommand
-    private HashMap<String, Command> mapCommand;
+    private HashMap<String, Command> commandHashMap;
     @Input
     private Path script;
     @SetInCommand
-    private Path fileForSave;
+    private Path fileSave;
 
     @Override
     public void execute() {

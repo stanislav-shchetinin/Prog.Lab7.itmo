@@ -5,26 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2981cd97-83f0-46c9-ae74-fe3540fabf82" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/exceptions/FileException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/util/arguments/FactoryGetterArgument.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/util/arguments/filed/CSVGetterFieldArgument.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/util/arguments/filed/FactoryGetterFieldArgument.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/util/arguments/filed/GetterFieldArgument.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/util/arguments/filed/RemoveAnnotations.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/util/arguments/filed/WayGetFieldArgument.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/files/file_save" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/base/Coordinates.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/base/Coordinates.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/base/Vehicle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/base/Vehicle.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/collection/CollectionDirector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/collection/CollectionDirector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/files/file" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/files/file" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/arguments/FactoryGettersArgument.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/arguments/GetterArgument.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/arguments/GetterArgument.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/commands/ExecuteScript.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/commands/ExecuteScript.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/commands/Save.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/commands/Save.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/util/builders/CommandBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/builders/CommandBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/builders/CommandInput.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/builders/CommandInput.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/builders/FieldBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/builders/FieldBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/builders/VehicleBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/builders/VehicleBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/constants/ConstantsForCollectionDirector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/constants/ConstantsForCollectionDirector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/constants/ConstantsForFieldBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/constants/ConstantsForFieldBuilder.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

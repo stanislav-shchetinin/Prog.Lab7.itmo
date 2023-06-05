@@ -1,14 +1,20 @@
 package base;
 
+import lombok.Getter;
+import lombok.Setter;
 import lombok.ToString;
 import util.annatations.vehicle.CheckIt;
 import util.annatations.vehicle.MaxValue;
 import util.annatations.vehicle.MinValue;
 import util.annatations.vehicle.NotNull;
 
+import java.io.Serializable;
+
 import static util.constants.ConstantsForBase.MAX_VALUE_FOR_COORDINATE_X;
 import static util.constants.ConstantsForBase.MIN_VALUE_FOR_COORDINATE_Y;
 @ToString
+@Getter
+@Setter
 public class Coordinates {
 
     @NotNull

@@ -36,9 +36,9 @@ public class CommandBuilder {
         for (Field fieldCommand : command.getClass().getDeclaredFields()){
             if (fieldCommand.isAnnotationPresent(SetInCommand.class)){
                 for (Field fieldCommandBuilder : this.getClass().getDeclaredFields()){
-                    if (fieldCommand.getType().equals(fieldCommandBuilder.getType())){
+                    if (fieldCommand.getName().equals(fieldCommandBuilder.getName())){
                         fieldCommand.setAccessible(true);
-                        fieldCommand.set(command, fieldCommandBuilder.get(this)); //если тип поля, которое нужно добавить совпадает с каким-то аргументом из строителя команд, то присвоим его
+                        fieldCommand.set(command, fieldCommandBuilder.get(this)); //если имя поля из строителя == имя поля из команды, то в команду уст. знач. поля из билдера
                     }
                 }
             }

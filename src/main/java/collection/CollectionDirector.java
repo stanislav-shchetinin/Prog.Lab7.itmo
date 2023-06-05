@@ -2,6 +2,7 @@ package collection;
 
 import base.Vehicle;
 import exceptions.CollectionException;
+import lombok.Getter;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.*;
@@ -11,6 +12,7 @@ import java.util.stream.Collectors;
 import static util.constants.ConstantsForCollectionDirector.*;
 
 public class CollectionDirector<T extends AbstractCollection<Vehicle>> {
+    @Getter
     private T collection;
     private HashSet<UUID> uuidHashSet;
     private final Date date;

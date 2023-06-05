@@ -4,13 +4,15 @@ import lombok.*;
 import org.apache.commons.lang3.builder.CompareToBuilder;
 import util.annatations.vehicle.*;
 
+import java.io.Serializable;
 import java.util.UUID;
 @EqualsAndHashCode
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
 @Setter
-public class Vehicle implements Comparable<Vehicle>{
+@Getter
+public class Vehicle implements Comparable<Vehicle>, Serializable {
     @Id
     @NotNull
     @IdAutoGenerate
