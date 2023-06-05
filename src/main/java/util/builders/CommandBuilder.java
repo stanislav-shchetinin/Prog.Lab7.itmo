@@ -1,6 +1,7 @@
 package util.builders;
 
 import commands.auxiliary.Command;
+import exceptions.FileException;
 import lombok.Getter;
 import lombok.extern.java.Log;
 import util.annatations.command.SetInCommand;
@@ -11,16 +12,15 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import static util.constants.ConstantsForGlobal.FILE_NAME;
+import static util.constants.ConstantsForGlobal.FILE_SAVE_NAME;
 
-@Log
 public class CommandBuilder {
     @Getter
     private Command command;
     private HashMap<String, Command> commandHashMap;
     private CommandInput commandInput;
     private ArrayList<Command> listCommands;
-    private Path file = Path.of(FILE_NAME);
+    private Path fileSave;
 
     //Подумать над тем, как распределить все объекты так, чтобы не использовать лишние при создании команды
     public CommandBuilder(WayGetArgument wayGetArgument, HashMap<String, Command> commandHashMap,
@@ -28,9 +28,10 @@ public class CommandBuilder {
         commandInput = new CommandInput(wayGetArgument, commandHashMap);
         this.commandHashMap = commandHashMap;
         this.listCommands = listCommands;
+        this.fileSave = Path.of(FILE_SAVE_NAME);
     }
 
-    public void buildCommand() throws IllegalAccessException{
+    public void buildCommand() throws IllegalAccessException, FileException {
         command = commandInput.inputCommand();
         for (Field fieldCommand : command.getClass().getDeclaredFields()){
             if (fieldCommand.isAnnotationPresent(SetInCommand.class)){

@@ -8,8 +8,7 @@ import java.util.*;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
-import static util.constants.ConstantsForCollectionDirector.NO_SUCH_ID;
-import static util.constants.ConstantsForCollectionDirector.REMOVE_FROM_EMPTY_COLLECTION;
+import static util.constants.ConstantsForCollectionDirector.*;
 
 public class CollectionDirector<T extends AbstractCollection<Vehicle>> {
     private T collection;
@@ -85,6 +84,9 @@ public class CollectionDirector<T extends AbstractCollection<Vehicle>> {
     }
 
     public void add(Vehicle vehicle){
+        if (uuidHashSet.contains(vehicle.getId())){
+            throw new IllegalArgumentException(NOT_UNIQUE_ID);
+        }
         collection.add(vehicle);
         uuidHashSet.add(vehicle.getId());
     }

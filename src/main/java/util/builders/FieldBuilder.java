@@ -1,11 +1,19 @@
 package util.builders;
 
-import util.arguments.GetterArgument;
 import base.VehicleType;
+import exceptions.FileException;
+import lombok.Getter;
+import lombok.Setter;
 import util.annatations.vehicle.handler.HandlerVehicleAnnotations;
 import util.annatations.vehicle.NotInput;
+import util.arguments.filed.CSVGetterFieldArgument;
+import util.arguments.filed.GetterFieldArgument;
+import util.arguments.filed.RemoveAnnotations;
 
 import java.lang.reflect.Field;
+import java.time.DateTimeException;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeParseException;
 import java.util.UUID;
 
 import static util.constants.ConstantsForFieldBuilder.*;
@@ -13,16 +21,17 @@ import static util.constants.ConstantsForFieldBuilder.*;
 public class FieldBuilder {
     private final Object parent;
     private final Field field;
-    private GetterArgument getterArgument;
+    private GetterFieldArgument getterArgument;
+    @Getter //Убрать!
     private Object value;
     private boolean isNotInput;
-    public FieldBuilder(GetterArgument getterArgument, Object parent, Field field){
+    public FieldBuilder(GetterFieldArgument getterArgument, Object parent, Field field){
         this.parent = parent;
         this.field = field;
         this.getterArgument = getterArgument;
         field.setAccessible(true);
     }
-    //Лучше разделить реализации где есть value и где его надо получить
+    //Лучше разделить реализации где есть value и где его надо получить (в первом случае - поля Vehicle, во втором - Command)
     public FieldBuilder(String value, Object parent, Field field){
         this.parent = parent;
         this.field = field;
@@ -43,18 +52,18 @@ public class FieldBuilder {
     }
 
     public FieldBuilder setNotInput() {
-        isNotInput = field.isAnnotationPresent(NotInput.class);
+        isNotInput = field.isAnnotationPresent(NotInput.class) && !(getterArgument instanceof RemoveAnnotations);
         return this;
     }
 
-    public FieldBuilder inputField(){
+    public FieldBuilder inputField() throws FileException {
         if (!isNotInput)
             value = getterArgument.getFieldArgument(field);
         return this;
     }
 
     public FieldBuilder toDouble(){
-        if (field.getType().equals(Double.class)){
+        if (field.getType().equals(Double.class) && !isNotInput){
             try {
                 value = Double.parseDouble((String) value);
             } catch (NumberFormatException e){
@@ -65,7 +74,7 @@ public class FieldBuilder {
 
     }
     public FieldBuilder toLong(){
-        if (field.getType().equals(Long.class)){
+        if (field.getType().equals(Long.class) && !isNotInput){
             try {
                 value = Long.parseLong((String) value);
             } catch (NumberFormatException e){
@@ -75,7 +84,7 @@ public class FieldBuilder {
         return this;
     }
     public FieldBuilder toVehicleType(){
-        if (field.getType().equals(VehicleType.class)) {
+        if (field.getType().equals(VehicleType.class) && !isNotInput) {
             try {
                 value = VehicleType.valueOf((String) value);
             } catch (IllegalArgumentException e){
@@ -85,11 +94,21 @@ public class FieldBuilder {
         return this;
     }
     public FieldBuilder toUUID(){
-        if (field.getType().equals(UUID.class)) {
+        if (field.getType().equals(UUID.class) && !isNotInput) {
             try {
                 value = UUID.fromString((String) value);
             } catch (IllegalArgumentException e){
                 throw new IllegalArgumentException(ERROR_UUID_TYPE);
+            }
+        }
+        return this;
+    }
+    public FieldBuilder toZonedDataTime(){
+        if (field.getType().equals(ZonedDateTime.class) && !isNotInput) {
+            try {
+                value = ZonedDateTime.parse((String) value);
+            } catch (DateTimeParseException e){
+                throw new IllegalArgumentException(ERROR_ZONED_DATA_TIME_TYPE);
             }
         }
         return this;

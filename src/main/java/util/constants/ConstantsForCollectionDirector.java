@@ -6,4 +6,7 @@ public class ConstantsForCollectionDirector {
     public static final String NO_SUCH_ID =
             "Нет элемента с таким id в коллекции";
 
+    public static final String NOT_UNIQUE_ID =
+            "Уже существует Vehicle с таким id";
+
 }

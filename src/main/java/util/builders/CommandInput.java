@@ -1,6 +1,7 @@
 package util.builders;
 
-import util.arguments.FactoryGettersArgument;
+import exceptions.FileException;
+import util.arguments.FactoryGetterArgument;
 import util.arguments.GetterArgument;
 import util.arguments.WayGetArgument;
 import base.Vehicle;
@@ -19,11 +20,11 @@ public class CommandInput {
     HashMap<String, Command> commandHashMap;
 
     public CommandInput(WayGetArgument wayGetArgument, HashMap<String, Command> commandHashMap){
-        getterArgument = new FactoryGettersArgument(wayGetArgument).getGetterArgument();
+        getterArgument = FactoryGetterArgument.generateGetterArgument(wayGetArgument);
         this.commandHashMap = commandHashMap;
     }
 
-    public Command inputCommand() throws IllegalArgumentException, IllegalAccessException {
+    public Command inputCommand() throws IllegalArgumentException, IllegalAccessException, FileException {
 
         String[] args = getterArgument.getCommandArgument();
         Command command = commandHashMap.get(args[0]);

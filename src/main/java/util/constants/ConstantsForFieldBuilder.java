@@ -7,6 +7,7 @@ public class ConstantsForFieldBuilder {
     public static final String ERROR_LONG_TYPE = "Переданное значение не является long";
     public static final String ERROR_VEHICLE_TYPE_TYPE = "Переданное значение не является VehicleType";
     public static final String ERROR_UUID_TYPE = "Переданное значение не является UUID";
+    public static final String ERROR_ZONED_DATA_TIME_TYPE = "Переданное значение не является ZonedDataTime";
     public static final String ERROR_MAX_VALUE_ANNOTATION = "Аннотацию MaxValue могут иметь только Number";
     public static final String ERROR_MIN_VALUE_ANNOTATION = "Аннотацию MinValue могут иметь только Number";
     public static final String ERROR_NOT_ZERO_ANNOTATION = "Аннотацию NotZero могут иметь только Number";
@@ -16,4 +17,5 @@ public class ConstantsForFieldBuilder {
     public static final String ERROR_HANDLER_NOT_ZERO = "Значение равно 0";
     public static final String ERROR_HANDLER_NOT_POSITIVE = "Значение меньше 0";
     public static final String ERROR_HANDLER_NOT_NULL = "Значение null";
+    public static final String END_ARRAY = "Файл прочитан";
 }

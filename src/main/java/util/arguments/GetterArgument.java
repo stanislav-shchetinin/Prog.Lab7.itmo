@@ -1,8 +1,7 @@
 package util.arguments;
 
-import java.lang.reflect.Field;
+import util.arguments.filed.GetterFieldArgument;
 
-public interface GetterArgument {
-    String getFieldArgument(Field field);
+public interface GetterArgument extends GetterFieldArgument {
     String[] getCommandArgument();
 }

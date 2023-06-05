@@ -1,13 +1,12 @@
 package util.builders;
 
 import base.Vehicle;
+import exceptions.FileException;
 import lombok.Getter;
 import lombok.extern.java.Log;
 import util.annatations.vehicle.CheckIt;
-import util.arguments.FactoryGettersArgument;
-import util.arguments.GetterArgument;
-import util.arguments.WayGetArgument;
-import util.builders.FieldBuilder;
+import util.arguments.filed.CSVGetterFieldArgument;
+import util.arguments.filed.GetterFieldArgument;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
@@ -16,16 +15,16 @@ import java.lang.reflect.InvocationTargetException;
 public class VehicleBuilder {
     @Getter
     private Vehicle vehicle;
-    private final GetterArgument getterArgument;
-    public VehicleBuilder(GetterArgument getterArgument){
-        this.getterArgument = getterArgument;
+    private final GetterFieldArgument getterFieldArgument;
+    public VehicleBuilder(GetterFieldArgument getterFieldArgument){
+        this.getterFieldArgument = getterFieldArgument;
     }
 
     public void createVehicle(){
         this.vehicle = new Vehicle();
     }
 
-    public void buildVehicle() {
+    public void buildVehicle() throws FileException, IllegalArgumentException {
         for (Field field : Vehicle.class.getDeclaredFields()) {
             try {
                 field.setAccessible(true);
@@ -35,14 +34,16 @@ public class VehicleBuilder {
                     InstantiationException |
                      IllegalAccessException e){
                 log.warning(e.getMessage());
+                break;
             }
-
         }
     }
 
-    private void recursionInField(Field mainField, Object parent) throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
+    private void recursionInField(Field mainField, Object parent) throws NoSuchMethodException, InvocationTargetException,
+            InstantiationException, IllegalAccessException, FileException, IllegalArgumentException {
         boolean hasNotSystemField = false;
         Object mainFieldObject = null;
+
         for (Field field : mainField.getType().getDeclaredFields()){
             if (field.isAnnotationPresent(CheckIt.class)){
                 hasNotSystemField = true;
@@ -53,7 +54,7 @@ public class VehicleBuilder {
             }
         }
         if (!hasNotSystemField){
-            FieldBuilder fieldBuilder = new FieldBuilder(getterArgument, parent, mainField);
+            FieldBuilder fieldBuilder = new FieldBuilder(getterFieldArgument, parent, mainField);
             while (true){
                 try {
                     fieldBuilder
@@ -62,10 +63,15 @@ public class VehicleBuilder {
                             .toDouble()
                             .toLong()
                             .toVehicleType()
+                            .toUUID()
+                            .toZonedDataTime()
                             .handleAnnotationsOnField()
                             .setField();
                     break;
                 } catch (IllegalArgumentException | IllegalAccessException e) {
+                    if (getterFieldArgument instanceof CSVGetterFieldArgument){
+                        throw e;
+                    }
                     log.warning(e.getMessage());
                 }
             }
