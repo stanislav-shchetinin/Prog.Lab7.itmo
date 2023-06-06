@@ -18,10 +18,13 @@ import java.util.List;
 import static util.constants.ConstantsForFieldBuilder.END_ARRAY;
 
 public class CSVGetterFieldArgument implements GetterFieldArgument, RemoveAnnotations {
-    @Setter
     private Path path;
     private ArrayList<String> args;
     private int num_word = 0;
+
+    public CSVGetterFieldArgument(Path path){
+        this.path = path;
+    }
     @Override
     public String getFieldArgument(Field field) throws FileException {
         if (num_word == 0){

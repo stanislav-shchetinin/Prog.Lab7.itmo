@@ -16,9 +16,6 @@ public class VehicleBuilder {
     @Getter
     private Vehicle vehicle;
     private final GetterFieldArgument getterFieldArgument;
-    private String formatCSV;
-    private String formatCSV1;
-
     public VehicleBuilder(GetterFieldArgument getterFieldArgument){
         this.getterFieldArgument = getterFieldArgument;
     }

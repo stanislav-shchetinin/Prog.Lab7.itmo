@@ -3,9 +3,8 @@ package util.builders;
 import commands.auxiliary.Command;
 import exceptions.FileException;
 import lombok.Getter;
-import lombok.extern.java.Log;
 import util.annatations.command.SetInCommand;
-import util.arguments.WayGetArgument;
+import util.arguments.GetterArgument;
 
 import java.lang.reflect.Field;
 import java.nio.file.Path;
@@ -23,9 +22,9 @@ public class CommandBuilder {
     private Path fileSave;
 
     //Подумать над тем, как распределить все объекты так, чтобы не использовать лишние при создании команды
-    public CommandBuilder(WayGetArgument wayGetArgument, HashMap<String, Command> commandHashMap,
+    public CommandBuilder(GetterArgument getterArgument, HashMap<String, Command> commandHashMap,
                           ArrayList<Command> listCommands){
-        commandInput = new CommandInput(wayGetArgument, commandHashMap);
+        commandInput = new CommandInput(getterArgument, commandHashMap);
         this.commandHashMap = commandHashMap;
         this.listCommands = listCommands;
         this.fileSave = Path.of(FILE_SAVE_NAME);

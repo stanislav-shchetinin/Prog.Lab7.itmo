@@ -1,11 +1,8 @@
 package org.example;
 
-import com.opencsv.exceptions.CsvException;
 import commands.executor.CommandExecutor;
 import exceptions.FileException;
-import util.annatations.vehicle.CheckIt;
 import util.arguments.ConsoleGetterArgument;
-import util.arguments.WayGetArgument;
 import base.Vehicle;
 import collection.CollectionDirector;
 import commands.auxiliary.Command;
@@ -28,8 +25,7 @@ public class Main {
         HashMap<String, Command> hashMap = GlobalGenerate.getMapCommands(listCommands);
         Path path = PathGetter.getPathFileCollection();
 
-        CSVGetterFieldArgument csvGetterFieldArgument = new CSVGetterFieldArgument();
-        csvGetterFieldArgument.setPath(path);
+        CSVGetterFieldArgument csvGetterFieldArgument = new CSVGetterFieldArgument(path);
         VehicleBuilder vehicleBuilder = new VehicleBuilder(csvGetterFieldArgument);
         try {
             while (true){
@@ -42,9 +38,11 @@ public class Main {
             System.out.println(e.getMessage());
         }
 
+        //execute_script src/main/java/files/script
+
         while (true){
             try {
-                CommandBuilder commandBuilder = new CommandBuilder(WayGetArgument.CONSOLE, hashMap, listCommands);
+                CommandBuilder commandBuilder = new CommandBuilder(new ConsoleGetterArgument(), hashMap, listCommands);
                 commandBuilder.buildCommand();
                 CommandExecutor commandExecutor = new CommandExecutor(collectionDirector, commandBuilder.getCommand());
                 commandExecutor.executeCommand();

@@ -11,6 +11,8 @@ import util.arguments.filed.GetterFieldArgument;
 import util.arguments.filed.RemoveAnnotations;
 
 import java.lang.reflect.Field;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.time.DateTimeException;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeParseException;
@@ -108,6 +110,17 @@ public class FieldBuilder {
         if (field.getType().equals(ZonedDateTime.class) && !isNotInput) {
             try {
                 value = ZonedDateTime.parse((String) value);
+            } catch (DateTimeParseException e){
+                throw new IllegalArgumentException(ERROR_ZONED_DATA_TIME_TYPE);
+            }
+        }
+        return this;
+    }
+
+    public FieldBuilder toPath(){
+        if (field.getType().equals(Path.class) && !isNotInput) {
+            try {
+                value = Path.of((String) value);
             } catch (DateTimeParseException e){
                 throw new IllegalArgumentException(ERROR_ZONED_DATA_TIME_TYPE);
             }

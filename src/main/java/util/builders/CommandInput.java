@@ -1,9 +1,7 @@
 package util.builders;
 
 import exceptions.FileException;
-import util.arguments.FactoryGetterArgument;
 import util.arguments.GetterArgument;
-import util.arguments.WayGetArgument;
 import base.Vehicle;
 import util.annatations.command.Input;
 import commands.auxiliary.Command;
@@ -19,8 +17,8 @@ public class CommandInput {
     GetterArgument getterArgument;
     HashMap<String, Command> commandHashMap;
 
-    public CommandInput(WayGetArgument wayGetArgument, HashMap<String, Command> commandHashMap){
-        getterArgument = FactoryGetterArgument.generateGetterArgument(wayGetArgument);
+    public CommandInput(GetterArgument getterArgument, HashMap<String, Command> commandHashMap){
+        this.getterArgument = getterArgument;
         this.commandHashMap = commandHashMap;
     }
 
@@ -47,7 +45,7 @@ public class CommandInput {
                     throw new IllegalArgumentException(NOT_ENOUGH_ARGUMENTS);
                 } else {
                     FieldBuilder fieldBuilder = new FieldBuilder(args[index_args], command, field);
-                    fieldBuilder.toUUID().toDouble().setField();
+                    fieldBuilder.toUUID().toDouble().toPath().setField();
                     ++index_args;
                 }
             }

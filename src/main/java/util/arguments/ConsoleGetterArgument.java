@@ -22,8 +22,7 @@ public class ConsoleGetterArgument implements GetterArgument{
 
     @Override
     public String[] getCommandArgument() {
-        String[] args = scanner.nextLine().split(" ");
-        return args;
+        return scanner.nextLine().split(" ");
     }
 
     private String formatInput(Field field){
