@@ -7,7 +7,7 @@ import java.nio.file.Path;
 import java.util.Map;
 import java.util.Scanner;
 
-import static util.constants.ConstantsForFileBuilder.*;
+import static util.constants.ConstantsForPathGetter.*;
 
 @Log
 public class PathGetter {
@@ -22,10 +22,14 @@ public class PathGetter {
                 String pathString = mapEnv.get(nameOfGlobalVar);
                 path = Path.of(pathString);
                 if (Files.isRegularFile(path)){
-                    log.info(GETTING_FILE_SUCCESSFUL);
-                    return path;
+                    if (Files.isReadable(path)){
+                        log.info(GETTING_FILE_SUCCESSFUL);
+                        return path;
+                    } else {
+                        log.warning(NOT_READABLE_FILE);
+                    }
                 } else {
-                    log.warning(GETTING_FILE_WRONG);
+                    log.warning(NOT_FOUND_FILE);
                 }
             } else {
                 log.warning(NOT_FOUND_VAR_ENV);

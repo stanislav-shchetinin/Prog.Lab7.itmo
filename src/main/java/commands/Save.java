@@ -16,8 +16,11 @@ import lombok.extern.java.Log;
 import util.annatations.command.CollectionDirectorAnnotation;
 import util.annatations.command.SetInCommand;
 
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.IOException;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.AbstractCollection;
@@ -44,8 +47,18 @@ public class Save implements Command {
     @Override
     public void execute() {
 
-        for (Vehicle vehicle : collectionDirector.getCollection()){
-            System.out.println(vehicle.formatCSV);
+        if (!Files.isWritable(fileSave)){
+            log.warning("В этот файл нельзя записывать");
+        } else {
+            Charset charset = StandardCharsets.US_ASCII;
+            try (BufferedWriter writer = Files.newBufferedWriter(fileSave, charset)) {
+                writer.write(String.format("%s\n",collectionDirector.getHeadCSV()));
+                for (Vehicle vehicle : collectionDirector.getCollection()){
+                    writer.write(String.format("%s\n", vehicle.formatCSV));
+                }
+            } catch (IOException e) {
+                log.warning(e.getMessage());
+            }
         }
 
     }

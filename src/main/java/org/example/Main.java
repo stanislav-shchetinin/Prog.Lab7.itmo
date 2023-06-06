@@ -15,18 +15,15 @@ import util.GlobalGenerate;
 import util.PathGetter;
 import util.builders.VehicleBuilder;
 
-import java.io.IOException;
-import java.lang.reflect.Field;
 import java.nio.file.Path;
 import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
 
-        //Сейчас head хранится как поле в каждом Vehicle
-
         CollectionDirector<PriorityQueue<Vehicle>> collectionDirector =
                 new CollectionDirector<>(new PriorityQueue<>());
+
         ArrayList<Command> listCommands = GlobalGenerate.getListCommands();
         HashMap<String, Command> hashMap = GlobalGenerate.getMapCommands(listCommands);
         Path path = PathGetter.getPathFileCollection();
@@ -40,7 +37,6 @@ public class Main {
                 vehicleBuilder.buildVehicle();
                 Vehicle vehicle = vehicleBuilder.getVehicle();
                 collectionDirector.add(vehicle);
-                System.out.println(vehicle.head);
             }
         } catch (FileException | IllegalArgumentException e){
             System.out.println(e.getMessage());

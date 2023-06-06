@@ -18,7 +18,6 @@ import java.util.List;
 import static util.constants.ConstantsForFieldBuilder.END_ARRAY;
 
 public class CSVGetterFieldArgument implements GetterFieldArgument, RemoveAnnotations {
-
     @Setter
     private Path path;
     private ArrayList<String> args;

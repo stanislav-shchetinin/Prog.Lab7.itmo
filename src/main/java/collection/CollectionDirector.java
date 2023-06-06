@@ -3,7 +3,11 @@ package collection;
 import base.ElementCollection;
 import base.Vehicle;
 import exceptions.CollectionException;
+import exceptions.FileException;
 import lombok.Getter;
+import util.annatations.vehicle.CheckIt;
+import util.arguments.filed.CSVGetterFieldArgument;
+import util.builders.FieldBuilder;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
@@ -18,6 +22,8 @@ public class CollectionDirector<T extends AbstractCollection<Vehicle>> {
     private T collection;
     private HashSet<UUID> uuidHashSet;
     private final Date date;
+    @Getter
+    private String headCSV;
     private final Supplier<T> TFactory = ()->{
         try {
             return (T) collection.getClass().getConstructor().newInstance(); //Кажется не лучшее решение, особенно смущает небезопасный каст
@@ -29,9 +35,8 @@ public class CollectionDirector<T extends AbstractCollection<Vehicle>> {
         this.collection = collection;
         this.uuidHashSet = new HashSet<>();
         this.date = new Date();
-
+        this.headCSV = buildHead();
     }
-
     public String show(){
         String collectionToString = collection.toString();
         return collectionToString.substring(1, collectionToString.length() - 1);
@@ -124,6 +129,30 @@ public class CollectionDirector<T extends AbstractCollection<Vehicle>> {
         if (!uuidHashSet.contains(id)){
             throw new IllegalArgumentException(NO_SUCH_ID);
         }
+    }
+
+    private String buildHead() {
+        String res = "";
+        for (Field field : Vehicle.class.getDeclaredFields()) {
+            if (field.isAnnotationPresent(CheckIt.class))
+                res += recursionInField(field);
+        }
+        res = res.substring(0, res.length() - 1);
+        return res;
+    }
+    private String recursionInField(Field mainField) {
+        StringBuilder res = new StringBuilder();
+        boolean hasCheckItField = false;
+        for (Field field : mainField.getType().getDeclaredFields()){
+            if (field.isAnnotationPresent(CheckIt.class)){
+                hasCheckItField = true;
+                res.append(String.format("%s,", field.getName()));
+            }
+        }
+        if (!hasCheckItField){
+            res.append(String.format("%s,", mainField.getName()));
+        }
+        return res.toString();
     }
 
 }
