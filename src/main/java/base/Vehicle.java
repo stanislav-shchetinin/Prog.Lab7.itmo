@@ -5,13 +5,10 @@ import org.apache.commons.lang3.builder.CompareToBuilder;
 import util.annatations.vehicle.*;
 
 import java.io.Serializable;
+import java.lang.reflect.Field;
 import java.util.UUID;
 @EqualsAndHashCode
-@NoArgsConstructor
-@AllArgsConstructor
-@ToString
-@Setter
-@Getter
+@ToString(exclude = {"formatCSV"})
 public class Vehicle implements Comparable<Vehicle>, Serializable {
     @Id
     @NotNull
@@ -19,6 +16,7 @@ public class Vehicle implements Comparable<Vehicle>, Serializable {
     @NotInput
     @CheckIt
     @Getter
+    @Setter
     private UUID id; //Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
     @NotNull
     @CheckIt
@@ -32,6 +30,7 @@ public class Vehicle implements Comparable<Vehicle>, Serializable {
     @NotNull
     @NotInput
     @TimeCurrentGenerate
+    @CheckIt
     private java.time.ZonedDateTime creationDate; //Поле не может быть null, Значение этого поля должно генерироваться автоматически
 
     @NotNull
@@ -56,6 +55,14 @@ public class Vehicle implements Comparable<Vehicle>, Serializable {
     @CheckIt
     private VehicleType type; //Поле не может быть null
 
+    public String formatCSV; //public т.к. строится поэтапно и использование геттеров и сеттеров стоило бы много
+    public String head; //Кринж
+
+    public Vehicle(){
+        head = "";
+        formatCSV = "";
+    }
+
     @Override
     public int compareTo(Vehicle o) {
         return new CompareToBuilder()
@@ -64,4 +71,15 @@ public class Vehicle implements Comparable<Vehicle>, Serializable {
                 .append(enginePower, o.enginePower)
                 .toComparison();
     }
+    /*@Override
+    public String toString(){
+        String result = "";
+
+        for (Field field : this.getClass().getDeclaredFields()){
+            result += field.getName();
+            //if (field.toString())
+        }
+
+        return result;
+    }*/
 }

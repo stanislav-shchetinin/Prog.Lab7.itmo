@@ -16,6 +16,9 @@ public class VehicleBuilder {
     @Getter
     private Vehicle vehicle;
     private final GetterFieldArgument getterFieldArgument;
+    private String formatCSV;
+    private String formatCSV1;
+
     public VehicleBuilder(GetterFieldArgument getterFieldArgument){
         this.getterFieldArgument = getterFieldArgument;
     }
@@ -27,6 +30,7 @@ public class VehicleBuilder {
     public void buildVehicle() throws FileException, IllegalArgumentException {
         for (Field field : Vehicle.class.getDeclaredFields()) {
             try {
+                if (!field.isAnnotationPresent(CheckIt.class)) continue;
                 field.setAccessible(true);
                 recursionInField(field, vehicle);
             } catch (NoSuchMethodException |
@@ -37,6 +41,8 @@ public class VehicleBuilder {
                 break;
             }
         }
+        vehicle.head = vehicle.head.substring(0,vehicle.head.length() - 1);
+        vehicle.formatCSV = vehicle.formatCSV.substring(0,vehicle.formatCSV.length() - 1); //удаляется последняя ,
     }
 
     private void recursionInField(Field mainField, Object parent) throws NoSuchMethodException, InvocationTargetException,
@@ -67,6 +73,8 @@ public class VehicleBuilder {
                             .toZonedDataTime()
                             .handleAnnotationsOnField()
                             .setField();
+                    vehicle.head += String.format("%s,", fieldBuilder.getField().getName());
+                    vehicle.formatCSV += String.format("\"%s\",", fieldBuilder.getField().get(parent).toString()); //строится csv
                     break;
                 } catch (IllegalArgumentException | IllegalAccessException e) {
                     if (getterFieldArgument instanceof CSVGetterFieldArgument){

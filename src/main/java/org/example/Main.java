@@ -3,6 +3,8 @@ package org.example;
 import com.opencsv.exceptions.CsvException;
 import commands.executor.CommandExecutor;
 import exceptions.FileException;
+import util.annatations.vehicle.CheckIt;
+import util.arguments.ConsoleGetterArgument;
 import util.arguments.WayGetArgument;
 import base.Vehicle;
 import collection.CollectionDirector;
@@ -14,22 +16,14 @@ import util.PathGetter;
 import util.builders.VehicleBuilder;
 
 import java.io.IOException;
+import java.lang.reflect.Field;
 import java.nio.file.Path;
 import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
-        //1. Создать интерфейс GetterFieldArgument
-        //2. Сделать GetterFieldArgument родителем GetterArgument
-        //3. Сделать WayGetArgument родителем WayGetField - добавить CSV
-        //4. Сделать CSVGetterFieldArgument
-        //5. Создать фабрику GetterFieldArgument
-        //6. Передавать в VehicleBuilder реализацию GetterFieldArgument (переделать WayGetField и там через фабрику получить нужное)
-        /*
-        * while true:
-        *   vehicle = VehicleBuilder.build()
-        *   collectionDirector.add(vehicle)
-        * */
+
+        //Сейчас head хранится как поле в каждом Vehicle
 
         CollectionDirector<PriorityQueue<Vehicle>> collectionDirector =
                 new CollectionDirector<>(new PriorityQueue<>());
@@ -46,6 +40,7 @@ public class Main {
                 vehicleBuilder.buildVehicle();
                 Vehicle vehicle = vehicleBuilder.getVehicle();
                 collectionDirector.add(vehicle);
+                System.out.println(vehicle.head);
             }
         } catch (FileException | IllegalArgumentException e){
             System.out.println(e.getMessage());

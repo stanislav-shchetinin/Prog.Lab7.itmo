@@ -20,9 +20,10 @@ import static util.constants.ConstantsForFieldBuilder.*;
 
 public class FieldBuilder {
     private final Object parent;
+    @Getter
     private final Field field;
     private GetterFieldArgument getterArgument;
-    @Getter //Убрать!
+
     private Object value;
     private boolean isNotInput;
     public FieldBuilder(GetterFieldArgument getterArgument, Object parent, Field field){

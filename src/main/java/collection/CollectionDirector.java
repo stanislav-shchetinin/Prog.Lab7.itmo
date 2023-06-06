@@ -1,9 +1,11 @@
 package collection;
 
+import base.ElementCollection;
 import base.Vehicle;
 import exceptions.CollectionException;
 import lombok.Getter;
 
+import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.util.*;
 import java.util.function.Supplier;
@@ -27,6 +29,7 @@ public class CollectionDirector<T extends AbstractCollection<Vehicle>> {
         this.collection = collection;
         this.uuidHashSet = new HashSet<>();
         this.date = new Date();
+
     }
 
     public String show(){

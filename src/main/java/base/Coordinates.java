@@ -13,8 +13,6 @@ import java.io.Serializable;
 import static util.constants.ConstantsForBase.MAX_VALUE_FOR_COORDINATE_X;
 import static util.constants.ConstantsForBase.MIN_VALUE_FOR_COORDINATE_Y;
 @ToString
-@Getter
-@Setter
 public class Coordinates {
 
     @NotNull

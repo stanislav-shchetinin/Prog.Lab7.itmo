@@ -5,6 +5,7 @@ import collection.CollectionDirector;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.dataformat.csv.CsvMapper;
 import com.fasterxml.jackson.dataformat.csv.CsvSchema;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
@@ -42,26 +43,11 @@ public class Save implements Command {
     private Path fileSave;
     @Override
     public void execute() {
-        CsvMapper mapper = CsvMapper.builder()
-                .addModule(new JavaTimeModule())
-                .build();
-        mapper.configure(JsonGenerator.Feature.IGNORE_UNKNOWN, true);
-        List<String> names = new ArrayList<>();
-        CsvSchema schema = CsvSchema.builder().setUseHeader(true)
-                .addColumn("id")
-                .addColumn("name")
-                .addColumn("x")
-                .addColumn("y")
-                .addColumn("time")
-                .build();
 
-        ObjectWriter writer = mapper.writerFor(Vehicle.class).with(schema);
-
-        try {
-            writer.writeValues(fileSave.toFile()).writeAll(collectionDirector.getCollection().toArray());
-        } catch (IOException e){
-            System.out.println(e.getMessage());
+        for (Vehicle vehicle : collectionDirector.getCollection()){
+            System.out.println(vehicle.formatCSV);
         }
+
     }
 
     @Override
