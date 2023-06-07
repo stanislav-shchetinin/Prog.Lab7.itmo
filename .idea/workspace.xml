@@ -5,24 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2981cd97-83f0-46c9-ae74-fe3540fabf82" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/files/script" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/files/script2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/util/constants/ConstantsForCommands.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/commands/ExecuteScript.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/commands/ExecuteScript.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/files/file_save" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/files/file_save" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/arguments/ConsoleGetterArgument.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/arguments/ConsoleGetterArgument.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/arguments/FactoryGetterArgument.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/arguments/FileGetterArgument.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/arguments/FileGetterArgument.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/arguments/GetterArgument.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/arguments/GetterArgument.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/arguments/WayGetArgument.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/arguments/filed/CSVGetterFieldArgument.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/arguments/filed/CSVGetterFieldArgument.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/arguments/filed/FactoryGetterFieldArgument.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/arguments/filed/WayGetFieldArgument.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/builders/CommandBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/builders/CommandBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/builders/CommandInput.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/builders/CommandInput.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/builders/FieldBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/builders/FieldBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/builders/VehicleBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/builders/VehicleBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/commands/Exit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/commands/Exit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/commands/Save.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/commands/Save.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/util/constants/ConstantsForBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/constants/ConstantsForBase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/util/constants/ConstantsForCollectionDirector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/constants/ConstantsForCollectionDirector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/util/constants/ConstantsForCommandExecutor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/constants/ConstantsForCommandExecutor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/util/constants/ConstantsForCommandsDescription.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/constants/ConstantsForCommandsDescription.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/util/constants/ConstantsForCommandsName.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/constants/ConstantsForCommandsName.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/util/constants/ConstantsForConsoleFormatInput.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/constants/ConstantsForConsoleFormatInput.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/util/constants/ConstantsForFieldBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/constants/ConstantsForFieldBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/util/constants/ConstantsForGlobal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/constants/ConstantsForGlobal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/util/constants/ConstantsForPathGetter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/constants/ConstantsForPathGetter.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,8 +30,8 @@
       <list>
         <option value="AnnotationType" />
         <option value="Enum" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>

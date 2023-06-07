@@ -1,6 +1,10 @@
 package util.constants;
 
-public class ConstantsForCommandsDescription {
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
+public final class ConstantsForCommandsDescription {
     public static final String DESCRIPTION_ADD =
             "add {element} : добавить новый элемент в коллекцию";
     public static final String DESCRIPTION_ADD_IF_MAX =

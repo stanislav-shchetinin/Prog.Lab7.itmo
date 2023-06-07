@@ -1,6 +1,10 @@
 package util.constants;
 
-public class ConstantsForCommandsName {
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
+public final class ConstantsForCommandsName {
     public static final String NAME_ADD = "add";
     public static final String NAME_ADD_IF_MAX = "add_if_max";
     public static final String NAME_ADD_IF_MIN = "add_if_min";

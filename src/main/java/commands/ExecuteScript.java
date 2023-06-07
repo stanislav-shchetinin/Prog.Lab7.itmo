@@ -21,6 +21,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.*;
 
+import static util.constants.ConstantsForCommands.*;
 import static util.constants.ConstantsForCommandsDescription.DESCRIPTION_EXECUTE_SCRIPT;
 import static util.constants.ConstantsForCommandsName.NAME_EXECUTE_SCRIPT;
 
@@ -47,9 +48,6 @@ public class ExecuteScript implements Command {
     @SetInCommand
     private Path fileSave;
 
-    public static final String ERROR_NOT_FILE = "Нет файла по указанному пути";
-    public static final String ERROR_NOT_READABLE_FILE = "Не получается считать файл";
-
     @Override
     public void execute() {
         if (!Files.isRegularFile(fileSave)){
@@ -69,7 +67,7 @@ public class ExecuteScript implements Command {
                     commandBuilder.buildCommand();
                     if (commandBuilder.getCommand() instanceof ExecuteScript){
                         if (namesFiles.contains(fileSave)){
-                            log.warning("Цикл");
+                            log.warning(ERROR_CYCLE);
                             break;
                         }
                         namesFiles.add(fileSave);

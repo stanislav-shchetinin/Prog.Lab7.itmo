@@ -1,6 +1,10 @@
 package util.constants;
 
-public class ConstantsForFieldBuilder {
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
+public final class ConstantsForFieldBuilder {
     public static final String ERROR_HANDLER_UUID_TYPE = "Поле с аннотацией IdAutoGenerate должно реализовывать класс UUID";
     public static final String ERROR_HANDLER_DATE_TYPE = "Поле с аннотацией TimeCurrentGenerate должно реализовывать класс ZonedDateTime";
     public static final String ERROR_DOUBLE_TYPE = "Переданное значение не является double";

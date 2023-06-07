@@ -1,6 +1,10 @@
 package util.constants;
 
-public class ConstantsForPathGetter {
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
+public final class ConstantsForPathGetter {
     public static final String NOT_FOUND_VAR_ENV = "Нет такой переменной окружения";
     public static final String GETTING_FILE_SUCCESSFUL = "Файл получен успешно";
     public static final String NOT_FOUND_FILE = "Нет файла по данному пути";

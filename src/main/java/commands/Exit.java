@@ -3,6 +3,7 @@ package commands;
 import commands.auxiliary.Command;
 import lombok.extern.java.Log;
 
+import static util.constants.ConstantsForCommands.INFO_EXIT;
 import static util.constants.ConstantsForCommandsDescription.DESCRIPTION_EXIT;
 import static util.constants.ConstantsForCommandsName.NAME_EXIT;
 
@@ -17,7 +18,7 @@ public class Exit implements Command {
 
     @Override
     public void execute() {
-        log.info("Вызвана команда exit. Программа завершает выполнение");
+        log.info(INFO_EXIT);
         System.exit(0);
     }
 

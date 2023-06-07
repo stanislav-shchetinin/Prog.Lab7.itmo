@@ -1,6 +1,10 @@
 package util.constants;
 
-public class ConstantsForConsoleFormatInput {
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
+public final class ConstantsForConsoleFormatInput {
     public static final String DOUBLE_FORMAT_INPUT = "(Пример: \"12.32\") ";
 
     public static final String LONG_FORMAT_INPUT = "(Пример: \"12\") ";

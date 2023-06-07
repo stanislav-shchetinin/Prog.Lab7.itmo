@@ -27,6 +27,7 @@ import java.util.AbstractCollection;
 import java.util.ArrayList;
 import java.util.List;
 
+import static util.constants.ConstantsForCommands.ERROR_NOT_WRITABLE;
 import static util.constants.ConstantsForCommandsDescription.DESCRIPTION_SAVE;
 import static util.constants.ConstantsForCommandsName.NAME_SAVE;
 
@@ -48,7 +49,7 @@ public class Save implements Command {
     public void execute() {
 
         if (!Files.isWritable(fileSave)){
-            log.warning("В этот файл нельзя записывать");
+            log.warning(ERROR_NOT_WRITABLE);
         } else {
             Charset charset = StandardCharsets.US_ASCII;
             try (BufferedWriter writer = Files.newBufferedWriter(fileSave, charset)) {
