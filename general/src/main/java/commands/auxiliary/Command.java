@@ -1,5 +1,9 @@
 package commands.auxiliary;
 
-public interface Command extends Description {
-    void execute();
+import response.Response;
+
+import java.io.Serializable;
+
+public interface Command extends Description, Serializable {
+    Response execute();
 }

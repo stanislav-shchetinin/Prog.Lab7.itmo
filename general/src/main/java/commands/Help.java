@@ -3,6 +3,8 @@ package commands;
 import commands.auxiliary.Command;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import response.Response;
+import response.Status;
 import util.annatations.command.SetInCommand;
 
 import java.util.ArrayList;
@@ -22,10 +24,12 @@ public class Help implements Command {
     ArrayList<Command> listCommands;
 
     @Override
-    public void execute() {
+    public Response execute() {
+        StringBuilder stringBuilder = new StringBuilder();
         for (Command command : listCommands){
-            System.out.println(command.description());
+            stringBuilder.append(command.description());
         }
+        return new Response(Status.OK, stringBuilder.toString());
     }
 
     @Override

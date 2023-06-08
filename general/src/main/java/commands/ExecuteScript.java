@@ -9,6 +9,8 @@ import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.extern.java.Log;
+import response.Response;
+import response.Status;
 import util.annatations.command.CollectionDirectorAnnotation;
 import util.annatations.command.Input;
 import util.annatations.command.SetInCommand;
@@ -49,12 +51,12 @@ public class ExecuteScript implements Command {
     private Path fileSave;
 
     @Override
-    public void execute() {
+    public Response execute() {
         if (!Files.isRegularFile(fileSave)){
-            log.warning(ERROR_NOT_FILE);
+            return new Response(Status.ERROR, ERROR_NOT_FILE);
         }
         if (!Files.isReadable(fileSave)){
-            log.warning(ERROR_NOT_READABLE_FILE);
+            return new Response(Status.ERROR, ERROR_NOT_READABLE_FILE);
         }
         if (namesFiles == null){
             namesFiles = new HashSet<>();
@@ -87,7 +89,7 @@ public class ExecuteScript implements Command {
         } catch (IOException e){
             log.warning(e.getMessage());
         }
-
+        return new Response(Status.OK);
     }
 
     @Override

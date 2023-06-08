@@ -5,6 +5,8 @@ import collection.CollectionDirector;
 import commands.auxiliary.Command;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import response.Response;
+import response.Status;
 import util.annatations.command.CollectionDirectorAnnotation;
 import util.annatations.command.Input;
 import util.annatations.command.SetInCommand;
@@ -29,8 +31,9 @@ public class AddIfMin implements Command {
     private Vehicle vehicle;
 
     @Override
-    public void execute() {
+    public Response execute() {
         collectionDirector.addIfMin(vehicle);
+        return new Response(Status.OK);
     }
 
     @Override

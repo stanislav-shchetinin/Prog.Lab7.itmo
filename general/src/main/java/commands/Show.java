@@ -6,6 +6,8 @@ import commands.auxiliary.Command;
 import exceptions.CollectionException;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import response.Response;
+import response.Status;
 import util.annatations.command.CollectionDirectorAnnotation;
 import util.annatations.command.SetInCommand;
 
@@ -26,8 +28,8 @@ public class Show implements Command {
     private CollectionDirector<? extends AbstractCollection<Vehicle>> collectionDirector;
 
     @Override
-    public void execute() {
-        System.out.println(collectionDirector.show());
+    public Response execute() {
+        return new Response(Status.OK, collectionDirector.show());
     }
 
     @Override

@@ -5,6 +5,8 @@ import collection.CollectionDirector;
 import commands.auxiliary.Command;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import response.Response;
+import response.Status;
 import util.annatations.command.CollectionDirectorAnnotation;
 import util.annatations.command.SetInCommand;
 
@@ -25,8 +27,8 @@ public class Info implements Command {
     private CollectionDirector<? extends AbstractCollection<Vehicle>> collectionDirector;
 
     @Override
-    public void execute() {
-        System.out.println(collectionDirector.info());
+    public Response execute() {
+        return new Response(Status.OK, collectionDirector.info());
     }
 
     @Override

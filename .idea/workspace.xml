@@ -5,83 +5,36 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2981cd97-83f0-46c9-ae74-fe3540fabf82" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/client/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/main/java/org/example/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/general/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/general/src/main/java/org/example/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/general/src/main/java/util/arguments/GetterArgument.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/java/org/example/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/general/src/main/java/response/Response.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/general/src/main/java/response/Status.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/connection/ReadingCommand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/base/Coordinates.java" beforeDir="false" afterPath="$PROJECT_DIR$/general/src/main/java/base/Coordinates.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/base/ElementCollection.java" beforeDir="false" afterPath="$PROJECT_DIR$/general/src/main/java/base/ElementCollection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/base/Vehicle.java" beforeDir="false" afterPath="$PROJECT_DIR$/general/src/main/java/base/Vehicle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/base/VehicleType.java" beforeDir="false" afterPath="$PROJECT_DIR$/general/src/main/java/base/VehicleType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/collection/CollectionDirector.java" beforeDir="false" afterPath="$PROJECT_DIR$/general/src/main/java/collection/CollectionDirector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/commands/Add.java" beforeDir="false" afterPath="$PROJECT_DIR$/general/src/main/java/commands/Add.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/commands/AddIfMax.java" beforeDir="false" afterPath="$PROJECT_DIR$/general/src/main/java/commands/AddIfMax.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/commands/AddIfMin.java" beforeDir="false" afterPath="$PROJECT_DIR$/general/src/main/java/commands/AddIfMin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/commands/Clear.java" beforeDir="false" afterPath="$PROJECT_DIR$/general/src/main/java/commands/Clear.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/commands/CountByCapacity.java" beforeDir="false" afterPath="$PROJECT_DIR$/general/src/main/java/commands/CountByCapacity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/commands/ExecuteScript.java" beforeDir="false" afterPath="$PROJECT_DIR$/general/src/main/java/commands/ExecuteScript.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/commands/Exit.java" beforeDir="false" afterPath="$PROJECT_DIR$/general/src/main/java/commands/Exit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/commands/Help.java" beforeDir="false" afterPath="$PROJECT_DIR$/general/src/main/java/commands/Help.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/commands/Info.java" beforeDir="false" afterPath="$PROJECT_DIR$/general/src/main/java/commands/Info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/commands/PrintAscending.java" beforeDir="false" afterPath="$PROJECT_DIR$/general/src/main/java/commands/PrintAscending.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/commands/PrintUniqueEnginePower.java" beforeDir="false" afterPath="$PROJECT_DIR$/general/src/main/java/commands/PrintUniqueEnginePower.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/commands/RemoveById.java" beforeDir="false" afterPath="$PROJECT_DIR$/general/src/main/java/commands/RemoveById.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/commands/RemoveFirst.java" beforeDir="false" afterPath="$PROJECT_DIR$/general/src/main/java/commands/RemoveFirst.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/commands/Save.java" beforeDir="false" afterPath="$PROJECT_DIR$/general/src/main/java/commands/Save.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/commands/Show.java" beforeDir="false" afterPath="$PROJECT_DIR$/general/src/main/java/commands/Show.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/commands/UpdateId.java" beforeDir="false" afterPath="$PROJECT_DIR$/general/src/main/java/commands/UpdateId.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/commands/auxiliary/Command.java" beforeDir="false" afterPath="$PROJECT_DIR$/general/src/main/java/commands/auxiliary/Command.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/commands/auxiliary/Description.java" beforeDir="false" afterPath="$PROJECT_DIR$/general/src/main/java/commands/auxiliary/Description.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/commands/executor/CommandExecutor.java" beforeDir="false" afterPath="$PROJECT_DIR$/general/src/main/java/commands/executor/CommandExecutor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/exceptions/CollectionException.java" beforeDir="false" afterPath="$PROJECT_DIR$/general/src/main/java/exceptions/CollectionException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/exceptions/FileException.java" beforeDir="false" afterPath="$PROJECT_DIR$/general/src/main/java/exceptions/FileException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/files/file" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/files/file" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/files/file_save" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/files/file_save" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/files/script" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/files/script" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/files/script2" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/files/script2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/GlobalGenerate.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/util/GlobalGenerate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/PathGetter.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/util/PathGetter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/annatations/command/CollectionDirectorAnnotation.java" beforeDir="false" afterPath="$PROJECT_DIR$/general/src/main/java/util/annatations/command/CollectionDirectorAnnotation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/annatations/command/Input.java" beforeDir="false" afterPath="$PROJECT_DIR$/general/src/main/java/util/annatations/command/Input.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/annatations/command/SetInCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/general/src/main/java/util/annatations/command/SetInCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/annatations/vehicle/CheckIt.java" beforeDir="false" afterPath="$PROJECT_DIR$/general/src/main/java/util/annatations/vehicle/CheckIt.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/annatations/vehicle/Id.java" beforeDir="false" afterPath="$PROJECT_DIR$/general/src/main/java/util/annatations/vehicle/Id.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/annatations/vehicle/IdAutoGenerate.java" beforeDir="false" afterPath="$PROJECT_DIR$/general/src/main/java/util/annatations/vehicle/IdAutoGenerate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/annatations/vehicle/MaxValue.java" beforeDir="false" afterPath="$PROJECT_DIR$/general/src/main/java/util/annatations/vehicle/MaxValue.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/annatations/vehicle/MinValue.java" beforeDir="false" afterPath="$PROJECT_DIR$/general/src/main/java/util/annatations/vehicle/MinValue.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/annatations/vehicle/NotInput.java" beforeDir="false" afterPath="$PROJECT_DIR$/general/src/main/java/util/annatations/vehicle/NotInput.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/annatations/vehicle/NotNull.java" beforeDir="false" afterPath="$PROJECT_DIR$/general/src/main/java/util/annatations/vehicle/NotNull.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/annatations/vehicle/NotZero.java" beforeDir="false" afterPath="$PROJECT_DIR$/general/src/main/java/util/annatations/vehicle/NotZero.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/annatations/vehicle/PositiveNumber.java" beforeDir="false" afterPath="$PROJECT_DIR$/general/src/main/java/util/annatations/vehicle/PositiveNumber.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/annatations/vehicle/TimeCurrentGenerate.java" beforeDir="false" afterPath="$PROJECT_DIR$/general/src/main/java/util/annatations/vehicle/TimeCurrentGenerate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/annatations/vehicle/handler/HandlerVehicleAnnotations.java" beforeDir="false" afterPath="$PROJECT_DIR$/general/src/main/java/util/annatations/vehicle/handler/HandlerVehicleAnnotations.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/arguments/ConsoleGetterArgument.java" beforeDir="false" afterPath="$PROJECT_DIR$/general/src/main/java/util/arguments/ConsoleGetterArgument.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/arguments/FileGetterArgument.java" beforeDir="false" afterPath="$PROJECT_DIR$/general/src/main/java/util/arguments/FileGetterArgument.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/arguments/GetterArgument.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/arguments/filed/CSVGetterFieldArgument.java" beforeDir="false" afterPath="$PROJECT_DIR$/general/src/main/java/util/arguments/filed/CSVGetterFieldArgument.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/arguments/filed/GetterFieldArgument.java" beforeDir="false" afterPath="$PROJECT_DIR$/general/src/main/java/util/arguments/filed/GetterFieldArgument.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/arguments/filed/RemoveAnnotations.java" beforeDir="false" afterPath="$PROJECT_DIR$/general/src/main/java/util/arguments/filed/RemoveAnnotations.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/builders/CommandBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/general/src/main/java/util/builders/CommandBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/builders/CommandInput.java" beforeDir="false" afterPath="$PROJECT_DIR$/general/src/main/java/util/builders/CommandInput.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/builders/FieldBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/general/src/main/java/util/builders/FieldBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/builders/VehicleBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/general/src/main/java/util/builders/VehicleBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/constants/ConstantsForBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/general/src/main/java/util/constants/ConstantsForBase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/constants/ConstantsForCollectionDirector.java" beforeDir="false" afterPath="$PROJECT_DIR$/general/src/main/java/util/constants/ConstantsForCollectionDirector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/constants/ConstantsForCommandExecutor.java" beforeDir="false" afterPath="$PROJECT_DIR$/general/src/main/java/util/constants/ConstantsForCommandExecutor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/constants/ConstantsForCommands.java" beforeDir="false" afterPath="$PROJECT_DIR$/general/src/main/java/util/constants/ConstantsForCommands.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/constants/ConstantsForCommandsDescription.java" beforeDir="false" afterPath="$PROJECT_DIR$/general/src/main/java/util/constants/ConstantsForCommandsDescription.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/constants/ConstantsForCommandsName.java" beforeDir="false" afterPath="$PROJECT_DIR$/general/src/main/java/util/constants/ConstantsForCommandsName.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/constants/ConstantsForConsoleFormatInput.java" beforeDir="false" afterPath="$PROJECT_DIR$/general/src/main/java/util/constants/ConstantsForConsoleFormatInput.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/constants/ConstantsForFieldBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/general/src/main/java/util/constants/ConstantsForFieldBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/constants/ConstantsForGlobal.java" beforeDir="false" afterPath="$PROJECT_DIR$/general/src/main/java/util/constants/ConstantsForGlobal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/constants/ConstantsForPathGetter.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/util/constants/ConstantsForPathGetter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/org/example/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/general/src/main/java/commands/Add.java" beforeDir="false" afterPath="$PROJECT_DIR$/general/src/main/java/commands/Add.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/general/src/main/java/commands/AddIfMax.java" beforeDir="false" afterPath="$PROJECT_DIR$/general/src/main/java/commands/AddIfMax.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/general/src/main/java/commands/AddIfMin.java" beforeDir="false" afterPath="$PROJECT_DIR$/general/src/main/java/commands/AddIfMin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/general/src/main/java/commands/Clear.java" beforeDir="false" afterPath="$PROJECT_DIR$/general/src/main/java/commands/Clear.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/general/src/main/java/commands/CountByCapacity.java" beforeDir="false" afterPath="$PROJECT_DIR$/general/src/main/java/commands/CountByCapacity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/general/src/main/java/commands/ExecuteScript.java" beforeDir="false" afterPath="$PROJECT_DIR$/general/src/main/java/commands/ExecuteScript.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/general/src/main/java/commands/Exit.java" beforeDir="false" afterPath="$PROJECT_DIR$/general/src/main/java/commands/Exit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/general/src/main/java/commands/Help.java" beforeDir="false" afterPath="$PROJECT_DIR$/general/src/main/java/commands/Help.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/general/src/main/java/commands/Info.java" beforeDir="false" afterPath="$PROJECT_DIR$/general/src/main/java/commands/Info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/general/src/main/java/commands/PrintAscending.java" beforeDir="false" afterPath="$PROJECT_DIR$/general/src/main/java/commands/PrintAscending.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/general/src/main/java/commands/PrintUniqueEnginePower.java" beforeDir="false" afterPath="$PROJECT_DIR$/general/src/main/java/commands/PrintUniqueEnginePower.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/general/src/main/java/commands/RemoveById.java" beforeDir="false" afterPath="$PROJECT_DIR$/general/src/main/java/commands/RemoveById.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/general/src/main/java/commands/RemoveFirst.java" beforeDir="false" afterPath="$PROJECT_DIR$/general/src/main/java/commands/RemoveFirst.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/general/src/main/java/commands/Save.java" beforeDir="false" afterPath="$PROJECT_DIR$/general/src/main/java/commands/Save.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/general/src/main/java/commands/Show.java" beforeDir="false" afterPath="$PROJECT_DIR$/general/src/main/java/commands/Show.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/general/src/main/java/commands/UpdateId.java" beforeDir="false" afterPath="$PROJECT_DIR$/general/src/main/java/commands/UpdateId.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/general/src/main/java/commands/auxiliary/Command.java" beforeDir="false" afterPath="$PROJECT_DIR$/general/src/main/java/commands/auxiliary/Command.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/general/src/main/java/commands/executor/CommandExecutor.java" beforeDir="false" afterPath="$PROJECT_DIR$/general/src/main/java/commands/executor/CommandExecutor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/general/src/main/java/util/arguments/ConsoleGetterArgument.java" beforeDir="false" afterPath="$PROJECT_DIR$/general/src/main/java/util/arguments/ConsoleGetterArgument.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/general/src/main/java/util/builders/CommandBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/general/src/main/java/util/builders/CommandBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/general/src/main/java/util/builders/CommandInput.java" beforeDir="false" afterPath="$PROJECT_DIR$/general/src/main/java/util/builders/CommandInput.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/connection/Connection.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/connection/Connection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/connection/ReadingObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/connection/ReadingObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/connection/ReadingVehicle.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/connection/ReadingVehicle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/org/example/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,9 +45,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="AnnotationType" />
-        <option value="Enum" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
+        <option value="Enum" />
       </list>
     </option>
   </component>

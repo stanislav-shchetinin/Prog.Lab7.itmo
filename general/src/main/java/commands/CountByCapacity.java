@@ -2,6 +2,8 @@ package commands;
 
 import base.Vehicle;
 import collection.CollectionDirector;
+import response.Response;
+import response.Status;
 import util.annatations.command.CollectionDirectorAnnotation;
 import util.annatations.command.Input;
 import commands.auxiliary.Command;
@@ -29,8 +31,8 @@ public class CountByCapacity implements Command {
     private Double capacity;
 
     @Override
-    public void execute() {
-        System.out.println(collectionDirector.countByCapacity(capacity));
+    public Response execute() {
+        return new Response(Status.OK, collectionDirector.countByCapacity(capacity));
     }
 
     @Override

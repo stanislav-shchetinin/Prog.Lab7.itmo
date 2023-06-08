@@ -6,6 +6,8 @@ import commands.auxiliary.Command;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.extern.java.Log;
+import response.Response;
+import response.Status;
 import util.annatations.command.CollectionDirectorAnnotation;
 import util.annatations.command.Input;
 import util.annatations.command.SetInCommand;
@@ -35,11 +37,12 @@ public class UpdateId implements Command {
     private Vehicle vehicle;
 
     @Override
-    public void execute() {
+    public Response execute() {
         try {
             collectionDirector.updateById(vehicle, id);
+            return new Response(Status.OK);
         } catch (IllegalArgumentException e){
-            log.warning(e.getMessage());
+            return new Response(Status.ERROR, e.getMessage());
         }
     }
 

@@ -2,6 +2,8 @@ package commands;
 
 import base.Vehicle;
 import collection.CollectionDirector;
+import response.Response;
+import response.Status;
 import util.annatations.command.CollectionDirectorAnnotation;
 import util.annatations.command.Input;
 import commands.auxiliary.Command;
@@ -18,8 +20,9 @@ public class Add implements Command {
     @Input
     private Vehicle vehicle;
     @Override
-    public void execute() {
+    public Response execute() {
         collectionDirector.add(vehicle);
+        return new Response(Status.OK);
     }
 
     @Override

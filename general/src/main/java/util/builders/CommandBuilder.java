@@ -6,6 +6,7 @@ import lombok.Getter;
 import util.annatations.command.SetInCommand;
 import util.arguments.GetterArgument;
 
+import java.io.Serializable;
 import java.lang.reflect.Field;
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -13,7 +14,7 @@ import java.util.HashMap;
 
 import static util.constants.ConstantsForGlobal.FILE_SAVE_NAME;
 
-public class CommandBuilder {
+public class CommandBuilder implements Serializable {
     @Getter
     private Command command;
     private HashMap<String, Command> commandHashMap;

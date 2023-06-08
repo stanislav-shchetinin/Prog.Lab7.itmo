@@ -7,13 +7,14 @@ import lombok.extern.java.Log;
 import util.annatations.command.Input;
 import util.arguments.GetterArgument;
 
+import java.io.Serializable;
 import java.lang.reflect.Field;
 import java.util.HashMap;
 
 import static util.constants.ConstantsForCommandExecutor.*;
 
 @Log
-public class CommandInput {
+public class CommandInput implements Serializable {
     GetterArgument getterArgument;
     HashMap<String, Command> commandHashMap;
 

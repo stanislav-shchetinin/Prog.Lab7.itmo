@@ -1,10 +1,16 @@
 package org.example;
 
 import base.Vehicle;
+import collection.CollectionDirector;
+import commands.auxiliary.Command;
+import commands.executor.CommandExecutor;
+import connection.Connection;
+import connection.ReadingCommand;
+import connection.ReadingObject;
+import connection.ReadingVehicle;
+import response.Response;
 
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
+import java.io.*;
 import java.net.InetSocketAddress;
 import java.nio.ByteBuffer;
 import java.nio.channels.SelectionKey;
@@ -13,19 +19,21 @@ import java.nio.channels.ServerSocketChannel;
 import java.nio.channels.SocketChannel;
 import java.util.Arrays;
 import java.util.Iterator;
+import java.util.PriorityQueue;
 import java.util.Set;
 
 public class Main {
 
-    private static final int PORT = 12345;
-
     public static void main(String[] args) throws Exception{
 
-        ByteBuffer buf = ByteBuffer.allocateDirect(1024);
+        CollectionDirector<PriorityQueue<Vehicle>> collectionDirector =
+                new CollectionDirector<>(new PriorityQueue<>());
+
+        ByteBuffer buf = ByteBuffer.allocate(1024);
 
         Selector selector = Selector.open();
         ServerSocketChannel server = ServerSocketChannel.open();
-        server.bind(new InetSocketAddress(PORT));
+        server.bind(new InetSocketAddress(4782));
         server.configureBlocking(false);
         server.register(selector, SelectionKey.OP_ACCEPT);
 
@@ -49,6 +57,7 @@ public class Main {
                     System.out.println("Connected: " + client.getRemoteAddress());
                 } else if (key.isReadable()) {
                     SocketChannel client = (SocketChannel) key.channel();
+                    System.out.println(client.isConnected());
                     buf.clear();
                     int numBytesRead = client.read(buf);
                     if (numBytesRead == -1) {
@@ -56,22 +65,34 @@ public class Main {
                         client.close();
                         continue;
                     }
-                    buf.flip();
 
-                    int bytesRead = client.read(buf);
-                    byte[] data = buf.array();
+                    ByteArrayInputStream bis = new ByteArrayInputStream(buf.array());
+                    ObjectInputStream ois = new ObjectInputStream(bis);
+                    Command command = (Command) ois.readObject();
 
-                    // Десериализуем объект
-                    try(ByteArrayInputStream byteStream = new ByteArrayInputStream(data);
-                    ObjectInputStream objectStream = new ObjectInputStream(byteStream)) {
-                        Vehicle vehicle = (Vehicle) objectStream.readObject();
-                        System.out.println("Recive: " + vehicle);
-                    }
+                    CommandExecutor commandExecutor = new CommandExecutor(collectionDirector, command);
+                    Response response = commandExecutor.executeCommand();
 
                     buf.clear();
+                    buf.flip();
+
+                    ByteBuffer buf1 = ByteBuffer.allocate(1024);
+
+                    ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+                    ObjectOutputStream objectOutputStream = new ObjectOutputStream(byteArrayOutputStream);
+                    objectOutputStream.writeObject(response);
+                    byte[] bytes = byteArrayOutputStream.toByteArray();
+                    buf1.put(bytes);
+                    buf1.flip();
+
+                    while (buf1.hasRemaining()) {
+                        client.write(buf1);
+                    }
+                    buf1.clear();
+
                 }
+                break;
             }
         }
-
     }
 }

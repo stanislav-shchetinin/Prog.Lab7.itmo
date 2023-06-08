@@ -7,6 +7,8 @@ import exceptions.CollectionException;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.extern.java.Log;
+import response.Response;
+import response.Status;
 import util.annatations.command.CollectionDirectorAnnotation;
 import util.annatations.command.SetInCommand;
 
@@ -28,11 +30,12 @@ public class RemoveFirst implements Command {
     private CollectionDirector<? extends AbstractCollection<Vehicle>> collectionDirector;
 
     @Override
-    public void execute() {
+    public Response execute() {
         try {
             collectionDirector.removeFirst();
+            return new Response(Status.OK);
         } catch (CollectionException e){
-            log.warning(e.getMessage());
+            return new Response(Status.ERROR, e.getMessage());
         }
     }
 

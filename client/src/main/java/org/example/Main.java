@@ -2,6 +2,7 @@ package org.example;
 
 import commands.executor.CommandExecutor;
 import exceptions.FileException;
+import response.Response;
 import util.GlobalGenerate;
 import util.PathGetter;
 import util.arguments.ConsoleGetterArgument;
@@ -12,9 +13,7 @@ import util.arguments.filed.CSVGetterFieldArgument;
 import util.builders.CommandBuilder;
 import util.builders.VehicleBuilder;
 
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
+import java.io.*;
 import java.net.InetSocketAddress;
 import java.nio.ByteBuffer;
 import java.nio.channels.Selector;
@@ -26,80 +25,50 @@ import java.util.*;
 public class Main {
 
     private static final String HOSTNAME = "localhost";
-    private static final int PORT = 12345;
+    private static final int PORT = 4782;
 
     public static void main(String[] args) throws Exception{
 
-        ByteBuffer buf = ByteBuffer.allocate(32000);
-        SocketChannel client = SocketChannel.open(new InetSocketAddress(HOSTNAME, PORT));
-        client.configureBlocking(false);
+        ArrayList<Command> listCommand = GlobalGenerate.getListCommands();
+        HashMap<String, Command> commandHashMap = GlobalGenerate.getMapCommands(listCommand);
 
-        VehicleBuilder vehicleBuilder = new VehicleBuilder(new ConsoleGetterArgument());
+        ByteBuffer buf = ByteBuffer.allocate(1024);
+        SocketChannel client = SocketChannel.open(new InetSocketAddress(HOSTNAME, PORT));
+        client.configureBlocking(true);
 
         while (true) {
-            vehicleBuilder.createVehicle();
-            vehicleBuilder.buildVehicle();
-            Vehicle vehicle = vehicleBuilder.getVehicle();
             buf.clear();
+            CommandBuilder commandBuilder = new CommandBuilder(new ConsoleGetterArgument(), commandHashMap, listCommand);
+            commandBuilder.buildCommand();
+            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(byteArrayOutputStream);
+            objectOutputStream.writeObject(commandBuilder.getCommand());
+            byte[] bytes = byteArrayOutputStream.toByteArray();
+            buf.put(bytes);
+            buf.flip();
 
-            try(ByteArrayOutputStream byteStream = new ByteArrayOutputStream();
-            ObjectOutputStream objectStream = new ObjectOutputStream(byteStream)){
-                objectStream.writeObject(vehicle);
-                byte[] data = byteStream.toByteArray();
-
-                buf.put(data);
-                buf.flip();
-
-                while (buf.hasRemaining()) {
-                    client.write(buf);
-                }
-                System.out.println("Sent: " + vehicle);
+            while (buf.hasRemaining()) {
+                client.write(buf);
             }
-
 
             buf.clear();
             int numBytesRead = client.read(buf);
             if (numBytesRead == -1) {
                 break;
             }
-            /*String receivedMessage = new String(buf.array(), 0, numBytesRead);
-            System.out.println("Received: " + receivedMessage);*/
-            Thread.sleep(2000);
+
+            buf.flip();
+
+            ByteArrayInputStream bis = new ByteArrayInputStream(buf.array());
+            ObjectInputStream ois = new ObjectInputStream(bis);
+            Response response = (Response) ois.readObject();
+
+            if (response.getMessage() != null && response.getMessage() != ""){
+                System.out.println(response.getMessage());
+            }
+
         }
         client.close();
-
-        /*CollectionDirector<PriorityQueue<Vehicle>> collectionDirector =
-                new CollectionDirector<>(new PriorityQueue<>());
-
-        ArrayList<Command> listCommands = GlobalGenerate.getListCommands();
-        HashMap<String, Command> hashMap = GlobalGenerate.getMapCommands(listCommands);
-        Path path = PathGetter.getPathFileCollection();
-
-        CSVGetterFieldArgument csvGetterFieldArgument = new CSVGetterFieldArgument(path);
-        VehicleBuilder vehicleBuilder = new VehicleBuilder(csvGetterFieldArgument);
-        try {
-            while (true){
-                vehicleBuilder.createVehicle();
-                vehicleBuilder.buildVehicle();
-                Vehicle vehicle = vehicleBuilder.getVehicle();
-                collectionDirector.add(vehicle);
-            }
-        } catch (FileException | IllegalArgumentException e){
-            System.out.println(e.getMessage());
-        }
-
-        //execute_script src/main/java/files/script
-
-        while (true){
-            try {
-                CommandBuilder commandBuilder = new CommandBuilder(new ConsoleGetterArgument(), hashMap, listCommands);
-                commandBuilder.buildCommand();
-                CommandExecutor commandExecutor = new CommandExecutor(collectionDirector, commandBuilder.getCommand());
-                commandExecutor.executeCommand();
-            } catch (IllegalAccessException | IllegalArgumentException | FileException e) { //Недостаточное кол-во арг и несущ. команда обрабат. тут
-                System.out.println(e.getMessage());
-            }
-        }*/
 
     }
 }

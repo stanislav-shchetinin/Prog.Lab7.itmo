@@ -13,6 +13,8 @@ import commands.auxiliary.Command;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.extern.java.Log;
+import response.Response;
+import response.Status;
 import util.annatations.command.CollectionDirectorAnnotation;
 import util.annatations.command.SetInCommand;
 
@@ -46,10 +48,10 @@ public class Save implements Command {
     @SetInCommand
     private Path fileSave;
     @Override
-    public void execute() {
+    public Response execute() {
 
         if (!Files.isWritable(fileSave)){
-            log.warning(ERROR_NOT_WRITABLE);
+            return new Response(Status.ERROR, ERROR_NOT_WRITABLE);
         } else {
             Charset charset = StandardCharsets.US_ASCII;
             try (BufferedWriter writer = Files.newBufferedWriter(fileSave, charset)) {
@@ -57,8 +59,9 @@ public class Save implements Command {
                 for (Vehicle vehicle : collectionDirector.getCollection()){
                     writer.write(String.format("%s\n", vehicle.formatCSV));
                 }
+                return new Response(Status.OK);
             } catch (IOException e) {
-                log.warning(e.getMessage());
+                return new Response(Status.ERROR, e.getMessage());
             }
         }
 

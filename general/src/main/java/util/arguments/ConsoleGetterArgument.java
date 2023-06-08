@@ -2,13 +2,13 @@ package util.arguments;
 
 import base.VehicleType;
 
+import java.io.Serializable;
 import java.lang.reflect.Field;
 import java.util.Scanner;
 
 import static util.constants.ConstantsForConsoleFormatInput.*;
 
-public class ConsoleGetterArgument implements GetterArgument{
-
+public class ConsoleGetterArgument implements GetterArgument, Serializable {
     private final Scanner scanner;
     public ConsoleGetterArgument(){
         scanner = new Scanner(System.in);
