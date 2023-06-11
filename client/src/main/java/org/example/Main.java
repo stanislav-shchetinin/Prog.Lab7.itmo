@@ -25,15 +25,18 @@ import java.util.*;
 public class Main {
 
     private static final String HOSTNAME = "localhost";
-    private static final int PORT = 4782;
 
     public static void main(String[] args) throws Exception{
 
         ArrayList<Command> listCommand = GlobalGenerate.getListCommands();
         HashMap<String, Command> commandHashMap = GlobalGenerate.getMapCommands(listCommand);
 
+        System.out.println("Введите порт: ");
+        Scanner scanner = new Scanner(System.in);
+        int port = scanner.nextInt();
+
         ByteBuffer buf = ByteBuffer.allocate(1024);
-        SocketChannel client = SocketChannel.open(new InetSocketAddress(HOSTNAME, PORT));
+        SocketChannel client = SocketChannel.open(new InetSocketAddress(HOSTNAME, port));
         client.configureBlocking(true);
 
         while (true) {

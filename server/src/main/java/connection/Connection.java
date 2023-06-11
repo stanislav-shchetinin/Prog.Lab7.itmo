@@ -1,14 +1,17 @@
 package connection;
 
 import base.Vehicle;
+import collection.CollectionDirector;
+import commands.auxiliary.Command;
+import commands.executor.CommandExecutor;
 import lombok.extern.java.Log;
+import response.Response;
 
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
+import java.io.*;
 import java.net.InetSocketAddress;
 import java.nio.ByteBuffer;
 import java.nio.channels.*;
+import java.util.AbstractCollection;
 import java.util.Iterator;
 import java.util.Set;
 
@@ -25,7 +28,7 @@ public class Connection {
 
     public Connection(){
         this.port = FIRST_PORT;
-        this.byteBuffer = ByteBuffer.allocate(32000);
+        this.byteBuffer = ByteBuffer.allocate(1024);
     }
 
     public void connect(){
@@ -47,17 +50,11 @@ public class Connection {
             }
         }
 
-
     }
 
-    public void interaction(ReadingObject readingObject){
+    public void interaction(ReadingObject readingCommand) throws IOException {
         while (true) {
-            int numSelectedKeys = 0;
-            try {
-                numSelectedKeys = selector.selectNow();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
+            int numSelectedKeys = selector.selectNow();
             if (numSelectedKeys == 0) {
                 continue;
             }
@@ -70,49 +67,39 @@ public class Connection {
                 it.remove();
 
                 if (key.isAcceptable()) {
-                    clientConnect();
+                    SocketChannel client = server.accept();
+                    client.configureBlocking(false);
+                    client.register(selector, SelectionKey.OP_READ);
+                    System.out.println("Connected: " + client.getRemoteAddress());
                 } else if (key.isReadable()) {
-                    clientReadable(key, readingObject);
+                    SocketChannel client = (SocketChannel) key.channel();
+                    System.out.println(client.isConnected());
+                    byteBuffer.clear();
+                    int numBytesRead = client.read(byteBuffer);
+                    if (numBytesRead == -1) {
+                        System.out.println("Disconnected: " + client.getRemoteAddress());
+                        client.close();
+                        continue;
+                    }
+
+                    Response response = readingCommand.start(byteBuffer);
+
+                    ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+                    ObjectOutputStream objectOutputStream = new ObjectOutputStream(byteArrayOutputStream);
+                    objectOutputStream.writeObject(response);
+                    byte[] bytes = byteArrayOutputStream.toByteArray();
+                    byteBuffer.put(bytes);
+                    byteBuffer.flip();
+
+
+                    while (byteBuffer.hasRemaining()) {
+                        client.write(byteBuffer);
+                    }
+                    byteBuffer.clear();
+
                 }
+                break;
             }
-        }
-    }
-
-    private void clientConnect(){
-        try {
-            SocketChannel client = server.accept();
-            client.configureBlocking(false);
-            client.register(selector, SelectionKey.OP_READ);
-            System.out.println("Connected: " + client.getRemoteAddress());
-        } catch (IOException e){
-            log.warning(e.getMessage());
-        }
-    }
-
-    private void clientReadable(SelectionKey key, ReadingObject readingObject){
-        try {
-            SocketChannel client = (SocketChannel) key.channel();
-            byteBuffer.clear();
-            int numBytesRead = client.read(byteBuffer);
-            if (numBytesRead == -1) {
-                System.out.println("Disconnected: " + client.getRemoteAddress());
-                client.close();
-                return;
-            }
-            byteBuffer.flip();
-
-            int bytesRead = client.read(byteBuffer);
-            byte[] data = byteBuffer.array();
-
-            // Десериализуем объект
-            ByteArrayInputStream byteStream = new ByteArrayInputStream(data);
-            ObjectInputStream objectStream = new ObjectInputStream(byteStream);
-            readingObject.start(byteBuffer, objectStream);
-
-
-            byteBuffer.clear();
-        } catch (IOException e){
-            System.out.println(e.getMessage());
         }
 
     }

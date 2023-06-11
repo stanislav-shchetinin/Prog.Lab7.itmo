@@ -5,33 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2981cd97-83f0-46c9-ae74-fe3540fabf82" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/general/src/main/java/response/Response.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/general/src/main/java/response/Status.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/java/connection/ReadingCommand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/org/example/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/general/src/main/java/commands/Add.java" beforeDir="false" afterPath="$PROJECT_DIR$/general/src/main/java/commands/Add.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/general/src/main/java/commands/AddIfMax.java" beforeDir="false" afterPath="$PROJECT_DIR$/general/src/main/java/commands/AddIfMax.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/general/src/main/java/commands/AddIfMin.java" beforeDir="false" afterPath="$PROJECT_DIR$/general/src/main/java/commands/AddIfMin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/general/src/main/java/commands/Clear.java" beforeDir="false" afterPath="$PROJECT_DIR$/general/src/main/java/commands/Clear.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/general/src/main/java/commands/CountByCapacity.java" beforeDir="false" afterPath="$PROJECT_DIR$/general/src/main/java/commands/CountByCapacity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/general/src/main/java/commands/ExecuteScript.java" beforeDir="false" afterPath="$PROJECT_DIR$/general/src/main/java/commands/ExecuteScript.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/general/src/main/java/commands/Exit.java" beforeDir="false" afterPath="$PROJECT_DIR$/general/src/main/java/commands/Exit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/general/src/main/java/commands/Help.java" beforeDir="false" afterPath="$PROJECT_DIR$/general/src/main/java/commands/Help.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/general/src/main/java/commands/Info.java" beforeDir="false" afterPath="$PROJECT_DIR$/general/src/main/java/commands/Info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/general/src/main/java/commands/PrintAscending.java" beforeDir="false" afterPath="$PROJECT_DIR$/general/src/main/java/commands/PrintAscending.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/general/src/main/java/commands/PrintUniqueEnginePower.java" beforeDir="false" afterPath="$PROJECT_DIR$/general/src/main/java/commands/PrintUniqueEnginePower.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/general/src/main/java/commands/RemoveById.java" beforeDir="false" afterPath="$PROJECT_DIR$/general/src/main/java/commands/RemoveById.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/general/src/main/java/commands/RemoveFirst.java" beforeDir="false" afterPath="$PROJECT_DIR$/general/src/main/java/commands/RemoveFirst.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/general/src/main/java/commands/Save.java" beforeDir="false" afterPath="$PROJECT_DIR$/general/src/main/java/commands/Save.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/general/src/main/java/commands/Show.java" beforeDir="false" afterPath="$PROJECT_DIR$/general/src/main/java/commands/Show.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/general/src/main/java/commands/UpdateId.java" beforeDir="false" afterPath="$PROJECT_DIR$/general/src/main/java/commands/UpdateId.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/general/src/main/java/commands/auxiliary/Command.java" beforeDir="false" afterPath="$PROJECT_DIR$/general/src/main/java/commands/auxiliary/Command.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/general/src/main/java/commands/executor/CommandExecutor.java" beforeDir="false" afterPath="$PROJECT_DIR$/general/src/main/java/commands/executor/CommandExecutor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/general/src/main/java/util/arguments/ConsoleGetterArgument.java" beforeDir="false" afterPath="$PROJECT_DIR$/general/src/main/java/util/arguments/ConsoleGetterArgument.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/general/src/main/java/util/builders/CommandBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/general/src/main/java/util/builders/CommandBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/general/src/main/java/util/builders/CommandInput.java" beforeDir="false" afterPath="$PROJECT_DIR$/general/src/main/java/util/builders/CommandInput.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/java/connection/Connection.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/connection/Connection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/connection/ReadingCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/connection/ReadingCommand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/java/connection/ReadingObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/connection/ReadingObject.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/java/connection/ReadingVehicle.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/connection/ReadingVehicle.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/org/example/Main.java" afterDir="false" />
@@ -53,7 +30,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="RESET_MODE" value="KEEP" />
+    <option name="RESET_MODE" value="HARD" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -94,7 +71,7 @@
       <recent name="commands.executor" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.client2">
+  <component name="RunManager" selected="Application.server">
     <configuration name="client" type="Application" factoryName="Application">
       <envs>
         <env name="NAME_FILE" value="general/src/main/java/files/file" />
