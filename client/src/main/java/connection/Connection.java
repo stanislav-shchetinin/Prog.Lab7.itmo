@@ -1,17 +1,84 @@
 package connection;
 
-import java.nio.ByteBuffer;
+import commands.auxiliary.Command;
+import exceptions.FileException;
+import lombok.extern.java.Log;
+import util.GlobalGenerate;
 
+import java.io.*;
+import java.net.InetSocketAddress;
+import java.nio.ByteBuffer;
+import java.nio.channels.SocketChannel;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+import static util.constants.ConstantsForConnection.*;
+@Log
 public class Connection {
-    private int port;
+    private int port = 0;
     private ByteBuffer byteBuffer;
+    private ArrayList<Command> listCommand;
+    private HashMap<String, Command> commandHashMap;
+    private SocketChannel client;
 
     public Connection(){
-        this.byteBuffer = ByteBuffer.allocate(655);
+        this.byteBuffer = ByteBuffer.allocate(CAPACITY_BYTE_BUFFER);
+        this.listCommand = GlobalGenerate.getListCommands();
+        this.commandHashMap = GlobalGenerate.getMapCommands(listCommand);
+    }
+
+    public void interaction() {
+        while (true) {
+            try {
+                SendCommand sendCommand = new SendCommand(listCommand, commandHashMap);
+                sendCommand.send(byteBuffer, client);
+                ReadingResponse.read(byteBuffer, client);
+            } catch (FileException | IOException | ClassNotFoundException | IllegalAccessException |
+                    IllegalArgumentException e) {
+               log.warning(e.getMessage());
+            }
+
+        }
     }
 
     public void connect(){
+        inputPort();
+        while (true){
+            try {
+                Thread.sleep(1000);
+                this.client = SocketChannel.open(new InetSocketAddress(port));
+                client.configureBlocking(true);
+                log.info("Успешное подключение к серверу! Great! Amazing! Awesome!");
+                return;
+            } catch (IOException e){
+                System.out.println("Подключение...");
+            } catch (InterruptedException e){
+                log.warning(e.getMessage());
+            }
+        }
 
+    }
+
+    private void inputPort(){
+        while (port == 0){
+            System.out.println("Введите порт: ");
+            Scanner scanner = new Scanner(System.in);
+
+            try {
+                port = scanner.nextInt();
+            } catch (InputMismatchException e){
+                log.warning("Номер порта является числом");
+                continue;
+            }
+
+            if (port > MAX_NUMBER_PORT || port < MIN_NUMBER_PORT){
+                System.out.printf("Порт должен принимать значение от %d до %d%n",
+                        MIN_NUMBER_PORT, MAX_NUMBER_PORT);
+                port = 0;
+            }
+        }
     }
 
 }

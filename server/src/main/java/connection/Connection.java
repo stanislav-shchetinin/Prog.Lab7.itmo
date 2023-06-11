@@ -16,12 +16,11 @@ import java.util.AbstractCollection;
 import java.util.Iterator;
 import java.util.Set;
 
+import static util.constants.ConstantsForConnection.*;
+
 @Log
 public class Connection {
 
-    private static int FIRST_PORT = 5432;
-    private static int MAX_NUMBER_PORT = 64000;
-    private static int MIN_NUMBER_PORT = 1001;
     private int port;
     private ByteBuffer byteBuffer;
     private Selector selector;
@@ -31,7 +30,7 @@ public class Connection {
 
     public Connection(ReadingObject readingCommand){
         this.port = FIRST_PORT;
-        this.byteBuffer = ByteBuffer.allocate(65536);
+        this.byteBuffer = ByteBuffer.allocate(CAPACITY_BYTE_BUFFER);
         this.readingCommand = readingCommand;
     }
 
