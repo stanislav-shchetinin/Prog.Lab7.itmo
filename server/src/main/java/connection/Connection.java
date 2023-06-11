@@ -9,6 +9,7 @@ import response.Response;
 
 import java.io.*;
 import java.net.InetSocketAddress;
+import java.net.SocketException;
 import java.nio.ByteBuffer;
 import java.nio.channels.*;
 import java.util.AbstractCollection;
@@ -26,9 +27,12 @@ public class Connection {
     private Selector selector;
     private ServerSocketChannel server;
 
-    public Connection(){
+    private ReadingObject readingCommand;
+
+    public Connection(ReadingObject readingCommand){
         this.port = FIRST_PORT;
         this.byteBuffer = ByteBuffer.allocate(65536);
+        this.readingCommand = readingCommand;
     }
 
     public void connect(){
@@ -52,42 +56,69 @@ public class Connection {
 
     }
 
-    public void interaction(ReadingObject readingCommand) throws IOException {
-        while (true) {
-            int numSelectedKeys = selector.selectNow();
-            if (numSelectedKeys == 0) {
-                continue;
+    public void interaction() throws IOException {
+
+            while (true) {
+
+                if (selector.selectNow() == 0) {
+                    continue;
+                }
+
+                Set<SelectionKey> selectedKeys = selector.selectedKeys();
+                Iterator<SelectionKey> it = selectedKeys.iterator();
+                iterateSelectionKey(it);
             }
 
-            Set<SelectionKey> selectedKeys = selector.selectedKeys();
-            Iterator<SelectionKey> it = selectedKeys.iterator();
+    }
 
+    private void iterateSelectionKey(Iterator<SelectionKey> it){
             while (it.hasNext()) {
                 SelectionKey key = it.next();
                 it.remove();
-
                 if (key.isAcceptable()) {
-                    SocketChannel client = server.accept();
-                    client.configureBlocking(false);
-                    client.register(selector, SelectionKey.OP_READ);
-                    System.out.println("Connected: " + client.getRemoteAddress());
+                    clientAccept();
                 } else if (key.isReadable()) {
-                    SocketChannel client = (SocketChannel) key.channel();
-                    System.out.println(client.isConnected());
-                    byteBuffer.clear();
-                    int numBytesRead = client.read(byteBuffer);
-                    if (numBytesRead == -1) {
-                        System.out.println("Disconnected: " + client.getRemoteAddress());
-                        client.close();
-                        continue;
-                    }
-
-                    Response response = readingCommand.start(byteBuffer);
-                    SendResponse.send(response, client, byteBuffer);
-
+                    takeCommand(key);
                 }
-                break;
+                //break;
             }
+    }
+
+    private void clientAccept() {
+        try {
+            SocketChannel client = server.accept();
+            client.configureBlocking(false);
+            client.register(selector, SelectionKey.OP_READ);
+            System.out.println("Connected: " + client.getRemoteAddress());
+        } catch (IOException e){
+            log.warning(e.getMessage());
+        }
+
+    }
+
+    private void takeCommand(SelectionKey key){
+
+        try {
+            SocketChannel client = (SocketChannel) key.channel();
+            byteBuffer.clear();
+
+            if (key.isReadable()){
+                int numBytesRead = client.read(byteBuffer);
+                if (numBytesRead == -1) {
+                    System.out.println("Disconnected: " + client.getRemoteAddress());
+                    client.close();
+                    return;
+                }
+
+                Response response = readingCommand.start(byteBuffer);
+                SendResponse.send(response, client, byteBuffer);
+            }
+
+        } catch (SocketException e){
+            //Глушу, потому что иначе пока не подключиться клиент, будет выполняться тело отловки этого иск.
+            //Лучше найти способ как этой обойти без перехватывания исключений (возможно каким-то if'ом)
+        } catch (IOException e){
+            e.printStackTrace();
         }
 
     }

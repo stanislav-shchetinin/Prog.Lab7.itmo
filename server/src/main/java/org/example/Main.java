@@ -29,10 +29,10 @@ public class Main {
         CollectionDirector<PriorityQueue<Vehicle>> collectionDirector =
                 new CollectionDirector<>(new PriorityQueue<>());
 
-        Connection connection = new Connection();
-        connection.connect();
         ReadingObject readingCommand = new ReadingCommand(collectionDirector);
-        connection.interaction(readingCommand);
+        Connection connection = new Connection(readingCommand);
+        connection.connect();
+        connection.interaction();
 
     }
 }
