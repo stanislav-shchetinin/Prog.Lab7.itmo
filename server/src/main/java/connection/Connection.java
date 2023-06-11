@@ -28,7 +28,7 @@ public class Connection {
 
     public Connection(){
         this.port = FIRST_PORT;
-        this.byteBuffer = ByteBuffer.allocate(1024);
+        this.byteBuffer = ByteBuffer.allocate(65536);
     }
 
     public void connect(){
@@ -83,19 +83,7 @@ public class Connection {
                     }
 
                     Response response = readingCommand.start(byteBuffer);
-
-                    ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-                    ObjectOutputStream objectOutputStream = new ObjectOutputStream(byteArrayOutputStream);
-                    objectOutputStream.writeObject(response);
-                    byte[] bytes = byteArrayOutputStream.toByteArray();
-                    byteBuffer.put(bytes);
-                    byteBuffer.flip();
-
-
-                    while (byteBuffer.hasRemaining()) {
-                        client.write(byteBuffer);
-                    }
-                    byteBuffer.clear();
+                    SendResponse.send(response, client, byteBuffer);
 
                 }
                 break;

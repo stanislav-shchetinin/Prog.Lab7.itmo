@@ -35,7 +35,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         int port = scanner.nextInt();
 
-        ByteBuffer buf = ByteBuffer.allocate(1024);
+        ByteBuffer buf = ByteBuffer.allocate(65536);
         SocketChannel client = SocketChannel.open(new InetSocketAddress(HOSTNAME, port));
         client.configureBlocking(true);
 
@@ -60,15 +60,14 @@ public class Main {
                 break;
             }
 
-            buf.flip();
-
             ByteArrayInputStream bis = new ByteArrayInputStream(buf.array());
             ObjectInputStream ois = new ObjectInputStream(bis);
             Response response = (Response) ois.readObject();
 
-            if (response.getMessage() != null && response.getMessage() != ""){
+            if (response.getMessage() != null && !response.getMessage().equals("")){
                 System.out.println(response.getMessage());
             }
+
 
         }
         client.close();
