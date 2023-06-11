@@ -12,9 +12,9 @@ public class GlobalGenerate {
         return new ArrayList<>(List.of(
                 new Add(), new AddIfMax(), new AddIfMin(),
                 new Clear(), new CountByCapacity(), new ExecuteScript(),
-                new Exit(), new Help(), new Info(), new PrintAscending(),
+                new Help(), new Info(), new PrintAscending(),
                 new PrintUniqueEnginePower(), new RemoveById(), new RemoveFirst(),
-                new Save(), new Show(), new UpdateId()
+                new Show(), new UpdateId()
         ));
     }
     public static HashMap<String, Command> getMapCommands(ArrayList<Command> listCommands){
