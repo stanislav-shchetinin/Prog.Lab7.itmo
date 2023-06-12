@@ -78,23 +78,6 @@ public class Connection {
 
     }
 
-    public class ThreadInteraction extends Thread{
-
-        @Override
-        public void run(){
-            try {
-                if (selector.selectNow() == 0) {
-                    return;
-                }
-            } catch (IOException e){
-                log.warning(e.getMessage());
-            }
-            Set<SelectionKey> selectedKeys = selector.selectedKeys();
-            Iterator<SelectionKey> it = selectedKeys.iterator();
-            iterateSelectionKey(it);
-        }
-    }
-
     private void iterateSelectionKey(Iterator<SelectionKey> it){
             while (it.hasNext()) {
                 SelectionKey key = it.next();
@@ -134,8 +117,11 @@ public class Connection {
                     return;
                 }
 
-                Response response = readingCommand.start(byteBuffer);
-                SendResponse.send(response, client, byteBuffer);
+                executorService.submit(() -> {
+                    Response response = readingCommand.start(byteBuffer);
+                    SendResponse.send(response, client, byteBuffer);
+                });
+
             }
 
         } catch (SocketException e){
