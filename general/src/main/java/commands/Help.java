@@ -26,16 +26,11 @@ public class Help implements Command {
 
     @Override
     public Response execute() {
-        /*StringBuilder stringBuilder = new StringBuilder();
+        StringBuilder stringBuilder = new StringBuilder();
         for (Command command : listCommands){
-            stringBuilder.append(command.description());
+            stringBuilder.append(command.description()).append("\n");
         }
-        return new Response(Status.OK, stringBuilder.toString());*/
-        String ans = "";
-        for (Command command : listCommands){
-            ans += command.description();
-        }
-        return new Response(Status.OK, ans);
+        return new Response(Status.OK, stringBuilder.toString());
     }
 
     @Override

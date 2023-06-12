@@ -37,6 +37,7 @@ public class Connection {
                 }
             } catch (FileException | IOException | ClassNotFoundException | IllegalAccessException |
                     IllegalArgumentException e) {
+                e.printStackTrace();
                log.warning(e.getMessage());
             }
 

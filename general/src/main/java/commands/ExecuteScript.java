@@ -41,7 +41,7 @@ public class ExecuteScript implements Command {
     @CollectionDirectorAnnotation
     private CollectionDirector<? extends AbstractCollection<Vehicle>> collectionDirector;
     @Setter
-    private HashSet<Path> namesFiles;
+    private transient HashSet<Path> namesFiles;
     @SetInCommand
     private HashMap<String, Command> commandHashMap;
     @SetInCommand
@@ -54,12 +54,18 @@ public class ExecuteScript implements Command {
 
     @Override
     public Response execute() {
+        return new Response(Status.OK);
+    }
+
+    public List<Command> getListCommand() throws IllegalArgumentException{
+
         if (namesFiles == null){
             namesFiles = new HashSet<>();
         }
         if (listCommandsFromExecuteScript == null){
             listCommandsFromExecuteScript = new ArrayList<>();
         }
+
         try {
             FileGetterArgument fileGetterArgument = new FileGetterArgument(script);
             while (true){
@@ -68,12 +74,14 @@ public class ExecuteScript implements Command {
                     commandBuilder.buildCommand();
                     if (commandBuilder.getCommand() instanceof ExecuteScript){
                         if (namesFiles.contains(script)){
-                            return new Response(Status.ERROR, ERROR_CYCLE);
+                            throw new IllegalArgumentException(ERROR_CYCLE);
                         }
                         namesFiles.add(script);
                         ((ExecuteScript) commandBuilder.getCommand()).setNamesFiles(namesFiles);
+                        ((ExecuteScript) commandBuilder.getCommand()).getListCommand(); //сгенерировать лист
+                    } else {
+                        listCommandsFromExecuteScript.add(commandBuilder.getCommand());
                     }
-                    listCommandsFromExecuteScript.add(commandBuilder.getCommand());
                 } catch (IllegalAccessException | IllegalArgumentException e) { //Недостаточное кол-во арг и несущ. команда обрабат. тут
                     log.warning(e.getMessage());
                 } catch (NoSuchElementException e){
@@ -86,7 +94,7 @@ public class ExecuteScript implements Command {
         } catch (IOException e){
             log.warning(e.getMessage());
         }
-        return new Response(Status.OK);
+        return listCommandsFromExecuteScript;
     }
 
     @Override

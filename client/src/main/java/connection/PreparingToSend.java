@@ -20,15 +20,13 @@ public class PreparingToSend {
         CommandBuilder commandBuilder = new CommandBuilder(new ConsoleGetterArgument(), commandHashMap, listCommands);
         commandBuilder.buildCommand();
 
-        
-
         if (commandBuilder.getCommand() instanceof ExecuteScript){
-            Response response = commandBuilder.getCommand().execute(); //execute_script не выполняется.
-            // Он просто перебирает все команды в файле
-            if (response.getStatus().equals(Status.ERROR)){
-                log.warning(response.getMessage());
+            try {
+                return ((ExecuteScript) commandBuilder.getCommand()).getListCommand();
+            } catch (IllegalArgumentException e){
+                log.warning(e.getMessage());
+                return new ArrayList<>();
             }
-            return ((ExecuteScript) commandBuilder.getCommand()).getListCommandsFromExecuteScript();
         } else {
             return Arrays.asList(commandBuilder.getCommand());
         }

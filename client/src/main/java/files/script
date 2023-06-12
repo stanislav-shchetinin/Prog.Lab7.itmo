@@ -1,2 +1,5 @@
 info
-execute_script src/main/java/files/script2
+help
+add
+1 1 1 1 1 1 CAR
+show
