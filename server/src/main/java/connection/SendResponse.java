@@ -12,6 +12,7 @@ import java.nio.channels.SocketChannel;
 public class SendResponse {
     public static void send(Response response, SocketChannel client, ByteBuffer byteBuffer){
         try {
+            byteBuffer.clear();
             ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(byteArrayOutputStream);
             objectOutputStream.writeObject(response);

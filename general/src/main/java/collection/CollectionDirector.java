@@ -37,8 +37,11 @@ public class CollectionDirector<T extends AbstractCollection<Vehicle>> {
         this.headCSV = buildHead();
     }
     public String show(){
-        String collectionToString = collection.toString();
-        return collectionToString.substring(1, collectionToString.length() - 1);
+        StringBuilder stringBuilder = new StringBuilder();
+        for (Vehicle vehicle : collection){
+            stringBuilder.append(vehicle.toString()).append("\n");
+        }
+        return stringBuilder.toString();
     }
 
     public String info(){

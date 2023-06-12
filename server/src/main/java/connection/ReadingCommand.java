@@ -24,6 +24,7 @@ public class ReadingCommand implements ReadingObject{
     public Response start(ByteBuffer byteBuffer) {
         while (true){
             try {
+                byteBuffer.clear();
                 ByteArrayInputStream bis = new ByteArrayInputStream(byteBuffer.array());
                 ObjectInputStream objectInputStream = new ObjectInputStream(bis);
                 Command command = (Command) objectInputStream.readObject();

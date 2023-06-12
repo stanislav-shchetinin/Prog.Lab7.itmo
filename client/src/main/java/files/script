@@ -3,3 +3,4 @@ help
 add
 1 1 1 1 1 1 CAR
 show
+execute_script client/src/main/java/files/script_demp

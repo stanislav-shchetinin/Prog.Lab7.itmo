@@ -19,6 +19,7 @@ public class Vehicle implements Comparable<Vehicle>, Serializable {
     private UUID id; //Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
     @NotNull
     @CheckIt
+    @Getter
     private String name; //Поле не может быть null, Строка не может быть пустой
 
     @CheckIt

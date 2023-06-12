@@ -2,6 +2,7 @@ package commands;
 
 import base.Vehicle;
 import collection.CollectionDirector;
+import lombok.Getter;
 import response.Response;
 import response.Status;
 import util.annatations.command.CollectionDirectorAnnotation;
@@ -18,6 +19,7 @@ public class Add implements Command {
     @CollectionDirectorAnnotation
     private CollectionDirector<? extends AbstractCollection<Vehicle>> collectionDirector;
     @Input
+    @Getter
     private Vehicle vehicle;
     @Override
     public Response execute() {

@@ -10,8 +10,14 @@
       <change beforePath="$PROJECT_DIR$/client/src/main/java/connection/PreparingToSend.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/connection/PreparingToSend.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/main/java/files/script" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/files/script" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/main/java/files/script_demp" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/files/script_demp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/general/src/main/java/base/Vehicle.java" beforeDir="false" afterPath="$PROJECT_DIR$/general/src/main/java/base/Vehicle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/general/src/main/java/collection/CollectionDirector.java" beforeDir="false" afterPath="$PROJECT_DIR$/general/src/main/java/collection/CollectionDirector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/general/src/main/java/commands/Add.java" beforeDir="false" afterPath="$PROJECT_DIR$/general/src/main/java/commands/Add.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/general/src/main/java/commands/ExecuteScript.java" beforeDir="false" afterPath="$PROJECT_DIR$/general/src/main/java/commands/ExecuteScript.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/general/src/main/java/commands/Help.java" beforeDir="false" afterPath="$PROJECT_DIR$/general/src/main/java/commands/Help.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/general/src/main/java/util/builders/CommandBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/general/src/main/java/util/builders/CommandBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/general/src/main/java/util/builders/CommandInput.java" beforeDir="false" afterPath="$PROJECT_DIR$/general/src/main/java/util/builders/CommandInput.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/connection/ReadingCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/connection/ReadingCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/connection/SendResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/connection/SendResponse.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,7 +77,7 @@
       <recent name="commands.executor" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.client">
+  <component name="RunManager" selected="Application.server">
     <configuration name="client" type="Application" factoryName="Application">
       <envs>
         <env name="NAME_FILE" value="general/src/main/java/files/file" />

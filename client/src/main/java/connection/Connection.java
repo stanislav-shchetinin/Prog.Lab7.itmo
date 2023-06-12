@@ -35,9 +35,7 @@ public class Connection {
                     ReadingResponse.read(byteBuffer, client);
                     //execute_script client/src/main/java/files/script_demp
                 }
-            } catch (FileException | IOException | ClassNotFoundException | IllegalAccessException |
-                    IllegalArgumentException e) {
-                e.printStackTrace();
+            } catch (Exception e) {
                log.warning(e.getMessage());
             }
 

@@ -8,6 +8,7 @@ import util.arguments.GetterArgument;
 
 import java.io.Serializable;
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -31,7 +32,7 @@ public class CommandBuilder implements Serializable {
         this.fileSave = Path.of(FILE_SAVE_NAME);
     }
 
-    public void buildCommand() throws IllegalAccessException, FileException {
+    public void buildCommand() throws IllegalAccessException, FileException, InvocationTargetException, NoSuchMethodException, InstantiationException {
         command = commandInput.inputCommand();
         for (Field fieldCommand : command.getClass().getDeclaredFields()){
             if (fieldCommand.isAnnotationPresent(SetInCommand.class)){

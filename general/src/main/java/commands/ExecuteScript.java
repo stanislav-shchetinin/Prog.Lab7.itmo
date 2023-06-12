@@ -20,6 +20,7 @@ import util.arguments.FileGetterArgument;
 import util.builders.CommandBuilder;
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.*;
@@ -57,7 +58,7 @@ public class ExecuteScript implements Command {
         return new Response(Status.OK);
     }
 
-    public List<Command> getListCommand() throws IllegalArgumentException{
+    public List<Command> getListCommand() throws IllegalArgumentException, InvocationTargetException, NoSuchMethodException, InstantiationException {
 
         if (namesFiles == null){
             namesFiles = new HashSet<>();
@@ -80,6 +81,7 @@ public class ExecuteScript implements Command {
                         ((ExecuteScript) commandBuilder.getCommand()).setNamesFiles(namesFiles);
                         ((ExecuteScript) commandBuilder.getCommand()).getListCommand(); //сгенерировать лист
                     } else {
+
                         listCommandsFromExecuteScript.add(commandBuilder.getCommand());
                     }
                 } catch (IllegalAccessException | IllegalArgumentException e) { //Недостаточное кол-во арг и несущ. команда обрабат. тут

@@ -9,6 +9,7 @@ import util.arguments.GetterArgument;
 
 import java.io.Serializable;
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
 
 import static util.constants.ConstantsForCommandExecutor.*;
@@ -23,10 +24,10 @@ public class CommandInput implements Serializable {
         this.commandHashMap = commandHashMap;
     }
 
-    public Command inputCommand() throws IllegalArgumentException, IllegalAccessException, FileException {
+    public Command inputCommand() throws IllegalArgumentException, IllegalAccessException, FileException, NoSuchMethodException, InvocationTargetException, InstantiationException {
 
         String[] args = getterArgument.getCommandArgument();
-        Command command = commandHashMap.get(args[0]);
+        Command command = commandHashMap.get(args[0]).getClass().getConstructor().newInstance();
 
         if (command == null){
             throw  new IllegalArgumentException(NOT_FOUND_COMMAND);
