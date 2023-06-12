@@ -1,5 +1,6 @@
 package connection;
 
+import commands.Exit;
 import commands.auxiliary.Command;
 import exceptions.FileException;
 import lombok.extern.java.Log;
@@ -31,6 +32,9 @@ public class Connection {
             try {
                 List<Command> commandList = PreparingToSend.getCommands(listCommands, commandHashMap);
                 for (Command command : commandList){
+                    if (command instanceof Exit){
+                        command.execute();
+                    }
                     SendCommand.send(byteBuffer, client, command);
                     ReadingResponse.read(byteBuffer, client);
                     //execute_script client/src/main/java/files/script_demp

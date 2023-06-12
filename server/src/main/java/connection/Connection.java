@@ -4,6 +4,7 @@ import base.Vehicle;
 import collection.CollectionDirector;
 import commands.auxiliary.Command;
 import commands.executor.CommandExecutor;
+import lombok.AllArgsConstructor;
 import lombok.extern.java.Log;
 import response.Response;
 
@@ -15,6 +16,8 @@ import java.nio.channels.*;
 import java.util.AbstractCollection;
 import java.util.Iterator;
 import java.util.Set;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import static util.constants.ConstantsForConnection.*;
 
@@ -28,10 +31,13 @@ public class Connection {
 
     private ReadingObject readingCommand;
 
+    private ExecutorService executorService;
+
     public Connection(ReadingObject readingCommand){
         this.port = FIRST_PORT;
         this.byteBuffer = ByteBuffer.allocate(CAPACITY_BYTE_BUFFER);
         this.readingCommand = readingCommand;
+        this.executorService = Executors.newFixedThreadPool(5);
     }
 
     public void connect(){
@@ -55,19 +61,38 @@ public class Connection {
 
     }
 
-    public void interaction() throws IOException {
+    public void interaction() {
 
             while (true) {
-
-                if (selector.selectNow() == 0) {
-                    continue;
+                try {
+                    if (selector.selectNow() == 0) {
+                        continue;
+                    }
+                } catch (IOException e){
+                    log.warning(e.getMessage());
                 }
-
                 Set<SelectionKey> selectedKeys = selector.selectedKeys();
                 Iterator<SelectionKey> it = selectedKeys.iterator();
                 iterateSelectionKey(it);
             }
 
+    }
+
+    public class ThreadInteraction extends Thread{
+
+        @Override
+        public void run(){
+            try {
+                if (selector.selectNow() == 0) {
+                    return;
+                }
+            } catch (IOException e){
+                log.warning(e.getMessage());
+            }
+            Set<SelectionKey> selectedKeys = selector.selectedKeys();
+            Iterator<SelectionKey> it = selectedKeys.iterator();
+            iterateSelectionKey(it);
+        }
     }
 
     private void iterateSelectionKey(Iterator<SelectionKey> it){
@@ -121,9 +146,4 @@ public class Connection {
         }
 
     }
-
-    public void imageClient(){
-
-    }
-
 }

@@ -14,7 +14,7 @@ public class GlobalGenerate {
                 new Clear(), new CountByCapacity(), new ExecuteScript(),
                 new Help(), new Info(), new PrintAscending(),
                 new PrintUniqueEnginePower(), new RemoveById(), new RemoveFirst(),
-                new Show(), new UpdateId()
+                new Show(), new UpdateId(), new Exit()
         ));
     }
     public static HashMap<String, Command> getMapCommands(ArrayList<Command> listCommands){
