@@ -2,6 +2,7 @@ package commands;
 
 import commands.auxiliary.Command;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import response.Response;
 import response.Status;
@@ -25,11 +26,16 @@ public class Help implements Command {
 
     @Override
     public Response execute() {
-        StringBuilder stringBuilder = new StringBuilder();
+        /*StringBuilder stringBuilder = new StringBuilder();
         for (Command command : listCommands){
             stringBuilder.append(command.description());
         }
-        return new Response(Status.OK, stringBuilder.toString());
+        return new Response(Status.OK, stringBuilder.toString());*/
+        String ans = "";
+        for (Command command : listCommands){
+            ans += command.description();
+        }
+        return new Response(Status.OK, ans);
     }
 
     @Override

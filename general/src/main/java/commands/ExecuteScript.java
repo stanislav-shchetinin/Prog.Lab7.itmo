@@ -6,6 +6,7 @@ import commands.auxiliary.Command;
 import commands.executor.CommandExecutor;
 import exceptions.FileException;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.extern.java.Log;
@@ -46,20 +47,18 @@ public class ExecuteScript implements Command {
     @SetInCommand
     private ArrayList<Command> listCommands;
     @Input
-    private Path script;
-    @SetInCommand
-    private Path fileSave;
+    private transient Path script;
+
+    @Getter
+    private ArrayList<Command> listCommandsFromExecuteScript;
 
     @Override
     public Response execute() {
-        if (!Files.isRegularFile(fileSave)){
-            return new Response(Status.ERROR, ERROR_NOT_FILE);
-        }
-        if (!Files.isReadable(fileSave)){
-            return new Response(Status.ERROR, ERROR_NOT_READABLE_FILE);
-        }
         if (namesFiles == null){
             namesFiles = new HashSet<>();
+        }
+        if (listCommandsFromExecuteScript == null){
+            listCommandsFromExecuteScript = new ArrayList<>();
         }
         try {
             FileGetterArgument fileGetterArgument = new FileGetterArgument(script);
@@ -68,15 +67,13 @@ public class ExecuteScript implements Command {
                     CommandBuilder commandBuilder = new CommandBuilder(fileGetterArgument, commandHashMap, listCommands);
                     commandBuilder.buildCommand();
                     if (commandBuilder.getCommand() instanceof ExecuteScript){
-                        if (namesFiles.contains(fileSave)){
-                            log.warning(ERROR_CYCLE);
-                            break;
+                        if (namesFiles.contains(script)){
+                            return new Response(Status.ERROR, ERROR_CYCLE);
                         }
-                        namesFiles.add(fileSave);
+                        namesFiles.add(script);
                         ((ExecuteScript) commandBuilder.getCommand()).setNamesFiles(namesFiles);
                     }
-                    CommandExecutor commandExecutor = new CommandExecutor(collectionDirector, commandBuilder.getCommand());
-                    commandExecutor.executeCommand();
+                    listCommandsFromExecuteScript.add(commandBuilder.getCommand());
                 } catch (IllegalAccessException | IllegalArgumentException e) { //Недостаточное кол-во арг и несущ. команда обрабат. тут
                     log.warning(e.getMessage());
                 } catch (NoSuchElementException e){

@@ -9,32 +9,32 @@ import java.io.*;
 import java.net.InetSocketAddress;
 import java.nio.ByteBuffer;
 import java.nio.channels.SocketChannel;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.InputMismatchException;
-import java.util.Scanner;
+import java.util.*;
 
 import static util.constants.ConstantsForConnection.*;
 @Log
 public class Connection {
     private int port = 0;
     private ByteBuffer byteBuffer;
-    private ArrayList<Command> listCommand;
+    private ArrayList<Command> listCommands;
     private HashMap<String, Command> commandHashMap;
     private SocketChannel client;
 
     public Connection(){
         this.byteBuffer = ByteBuffer.allocate(CAPACITY_BYTE_BUFFER);
-        this.listCommand = GlobalGenerate.getListCommands();
-        this.commandHashMap = GlobalGenerate.getMapCommands(listCommand);
+        this.listCommands = GlobalGenerate.getListCommands();
+        this.commandHashMap = GlobalGenerate.getMapCommands(listCommands);
     }
 
     public void interaction() {
         while (true) {
             try {
-                SendCommand sendCommand = new SendCommand(listCommand, commandHashMap);
-                sendCommand.send(byteBuffer, client);
-                ReadingResponse.read(byteBuffer, client);
+                List<Command> commandList = PreparingToSend.getCommands(listCommands, commandHashMap);
+                for (Command command : commandList){
+                    SendCommand.send(byteBuffer, client, command);
+                    ReadingResponse.read(byteBuffer, client);
+                    //execute_script client/src/main/java/files/script_demp
+                }
             } catch (FileException | IOException | ClassNotFoundException | IllegalAccessException |
                     IllegalArgumentException e) {
                log.warning(e.getMessage());

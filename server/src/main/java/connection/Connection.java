@@ -122,4 +122,8 @@ public class Connection {
 
     }
 
+    public void imageClient(){
+
+    }
+
 }

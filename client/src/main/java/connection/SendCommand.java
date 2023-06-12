@@ -1,38 +1,46 @@
 package connection;
 
+import commands.ExecuteScript;
+import commands.Help;
 import commands.auxiliary.Command;
 import exceptions.FileException;
+import response.Response;
+import response.Status;
 import util.arguments.ConsoleGetterArgument;
 import util.builders.CommandBuilder;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
+import java.lang.reflect.Field;
 import java.nio.ByteBuffer;
 import java.nio.channels.SocketChannel;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 
 public class SendCommand {
-    private ArrayList<Command> listCommand;
-    private HashMap<String, Command> commandHashMap;
 
-    public SendCommand(ArrayList<Command> listCommand, HashMap<String, Command> commandHashMap){
-        this.listCommand = listCommand;
-        this.commandHashMap = commandHashMap;
-    }
-    public void send(ByteBuffer byteBuffer, SocketChannel client) throws FileException, IllegalAccessException, IOException {
+    public static void send(ByteBuffer byteBuffer, SocketChannel client, Command command)
+            throws FileException, IllegalAccessException, IOException {
+
         byteBuffer.clear();
-        CommandBuilder commandBuilder = new CommandBuilder(new ConsoleGetterArgument(), commandHashMap, listCommand);
-        commandBuilder.buildCommand();
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         ObjectOutputStream objectOutputStream = new ObjectOutputStream(byteArrayOutputStream);
-        objectOutputStream.writeObject(commandBuilder.getCommand());
+
+        objectOutputStream.writeObject(command);
+
         byte[] bytes = byteArrayOutputStream.toByteArray();
         byteBuffer.put(bytes);
         byteBuffer.flip();
         while (byteBuffer.hasRemaining()) {
             client.write(byteBuffer);
         }
+
     }
+
+
+
 }
