@@ -37,7 +37,7 @@ public class Connection {
         this.port = FIRST_PORT;
         this.byteBuffer = ByteBuffer.allocate(CAPACITY_BYTE_BUFFER);
         this.readingCommand = readingCommand;
-        this.executorService = Executors.newFixedThreadPool(5);
+        this.executorService = Executors.newFixedThreadPool(10);
     }
 
     public void connect(){
@@ -80,13 +80,15 @@ public class Connection {
 
     private void iterateSelectionKey(Iterator<SelectionKey> it){
             while (it.hasNext()) {
-                SelectionKey key = it.next();
-                it.remove();
-                if (key.isAcceptable()) {
-                    clientAccept();
-                } else if (key.isReadable()) {
-                    takeCommand(key);
-                }
+                executorService.submit(() -> {
+                    SelectionKey key = it.next();
+                    it.remove();
+                    if (key.isAcceptable()) {
+                        clientAccept();
+                    } else if (key.isReadable()) {
+                        takeCommand(key);
+                    }
+                });
                 //break;
             }
     }
