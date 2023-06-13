@@ -4,6 +4,7 @@ import commands.ExecuteScript;
 import commands.Help;
 import commands.auxiliary.Command;
 import exceptions.FileException;
+import intobj.SendObject;
 import response.Response;
 import response.Status;
 import util.arguments.ConsoleGetterArgument;
@@ -24,20 +25,9 @@ import java.util.List;
 public class SendCommand {
 
     public static void send(ByteBuffer byteBuffer, SocketChannel client, Command command)
-            throws FileException, IllegalAccessException, IOException {
+            throws IOException {
 
-        byteBuffer.clear();
-        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-        ObjectOutputStream objectOutputStream = new ObjectOutputStream(byteArrayOutputStream);
-
-        objectOutputStream.writeObject(command);
-
-        byte[] bytes = byteArrayOutputStream.toByteArray();
-        byteBuffer.put(bytes);
-        byteBuffer.flip();
-        while (byteBuffer.hasRemaining()) {
-            client.write(byteBuffer);
-        }
+        SendObject.send(command, client, byteBuffer);
 
     }
 

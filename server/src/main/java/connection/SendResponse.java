@@ -1,5 +1,6 @@
 package connection;
 
+import intobj.SendObject;
 import lombok.extern.java.Log;
 import response.Response;
 
@@ -12,18 +13,7 @@ import java.nio.channels.SocketChannel;
 public class SendResponse {
     public static void send(Response response, SocketChannel client, ByteBuffer byteBuffer){
         try {
-            byteBuffer.clear();
-            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-            ObjectOutputStream objectOutputStream = new ObjectOutputStream(byteArrayOutputStream);
-            objectOutputStream.writeObject(response);
-            byte[] bytes = byteArrayOutputStream.toByteArray();
-            byteBuffer.put(bytes);
-            byteBuffer.flip();
-
-            while (byteBuffer.hasRemaining()) {
-                client.write(byteBuffer);
-            }
-            byteBuffer.clear();
+            SendObject.send(response, client, byteBuffer);
         } catch (Exception e){
             log.warning(e.getMessage());
         }
