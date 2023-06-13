@@ -4,6 +4,7 @@ import base.Vehicle;
 import collection.CollectionDirector;
 import commands.auxiliary.Command;
 import commands.executor.CommandExecutor;
+import intobj.ReadObject;
 import lombok.AllArgsConstructor;
 import lombok.extern.java.Log;
 import response.Response;
@@ -24,10 +25,7 @@ public class ReadingCommand implements ReadingObject{
     public Response start(ByteBuffer byteBuffer) {
         while (true){
             try {
-                byteBuffer.clear();
-                ByteArrayInputStream bis = new ByteArrayInputStream(byteBuffer.array());
-                ObjectInputStream objectInputStream = new ObjectInputStream(bis);
-                Command command = (Command) objectInputStream.readObject();
+                Command command = (Command) ReadObject.read(byteBuffer);
                 CommandExecutor commandExecutor = new CommandExecutor(collectionDirector, command);
                 Response response = commandExecutor.executeCommand();
                 byteBuffer.clear();

@@ -24,10 +24,10 @@ public class Main {
 
     public static void main(String[] args) throws IOException, SQLException {
 
-        Properties info = new Properties();
+        /*Properties info = new Properties();
         info.load(new FileInputStream("server/src/main/java/db/db.cfg"));
         String jdbcURL = "jdbc:postgresql://localhost:4782/studs";
-        java.sql.Connection connectionDataBase = DriverManager.getConnection(jdbcURL, info);
+        java.sql.Connection connectionDataBase = DriverManager.getConnection(jdbcURL, info);*/
 
         CollectionDirector<PriorityQueue<Vehicle>> collectionDirector =
                 new CollectionDirector<>(new PriorityQueue<>());

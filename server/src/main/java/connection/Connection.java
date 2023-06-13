@@ -80,7 +80,7 @@ public class Connection {
 
     private void iterateSelectionKey(Iterator<SelectionKey> it){
             while (it.hasNext()) {
-                executorService.submit(() -> {
+                //executorService.submit(() -> {
                     SelectionKey key = it.next();
                     it.remove();
                     if (key.isAcceptable()) {
@@ -88,7 +88,7 @@ public class Connection {
                     } else if (key.isReadable()) {
                         takeCommand(key);
                     }
-                });
+                //});
                 //break;
             }
     }
@@ -119,10 +119,10 @@ public class Connection {
                     return;
                 }
 
-                executorService.submit(() -> {
+                //executorService.submit(() -> {
                     Response response = readingCommand.start(byteBuffer);
                     SendResponse.send(response, client, byteBuffer);
-                });
+                //});
 
             }
 
