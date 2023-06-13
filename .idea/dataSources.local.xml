@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal" created-in="IU-231.9011.34">
+    <data-source name="studs@pg" uuid="21b6b208-907e-4137-ad61-9f3176940381">
+      <database-info product="PostgreSQL" version="14.2" jdbc-version="4.2" driver-name="PostgreSQL JDBC Driver" driver-version="42.6.0" dbms="POSTGRES" exact-version="14.2">
+        <identifier-quote-string>&quot;</identifier-quote-string>
+      </database-info>
+      <case-sensitivity plain-identifiers="lower" quoted-identifiers="exact" />
+      <secret-storage>master_key</secret-storage>
+      <user-name>s367658</user-name>
+      <schema-mapping />
+      <ssh-properties>
+        <enabled>true</enabled>
+        <ssh-config-id>4542cf43-b810-467c-b299-489deb80ecf3</ssh-config-id>
+      </ssh-properties>
+    </data-source>
+  </component>
+</project>
