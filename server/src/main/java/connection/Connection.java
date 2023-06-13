@@ -29,11 +29,11 @@ public class Connection {
     private Selector selector;
     private ServerSocketChannel server;
 
-    private ReadingObject readingCommand;
+    private ReadingCommand readingCommand;
 
     private ExecutorService executorService;
 
-    public Connection(ReadingObject readingCommand){
+    public Connection(ReadingCommand readingCommand){
         this.port = FIRST_PORT;
         this.byteBuffer = ByteBuffer.allocate(CAPACITY_BYTE_BUFFER);
         this.readingCommand = readingCommand;

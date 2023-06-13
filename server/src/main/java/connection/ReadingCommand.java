@@ -18,10 +18,9 @@ import java.util.Arrays;
 
 @Log
 @AllArgsConstructor
-public class ReadingCommand implements ReadingObject{
+public class ReadingCommand{
 
     private CollectionDirector<? extends AbstractCollection<Vehicle>> collectionDirector;
-    @Override
     public Response start(ByteBuffer byteBuffer) {
         while (true){
             try {

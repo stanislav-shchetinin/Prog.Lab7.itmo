@@ -1,5 +1,6 @@
 package connection;
 
+import intobj.ReadObject;
 import response.Response;
 
 import java.io.ByteArrayInputStream;
@@ -16,9 +17,7 @@ public class ReadingResponse {
             return;
         }
 
-        ByteArrayInputStream bis = new ByteArrayInputStream(byteBuffer.array());
-        ObjectInputStream ois = new ObjectInputStream(bis);
-        Response response = (Response) ois.readObject();
+        Response response = (Response) ReadObject.read(byteBuffer);
 
         if (response.getMessage() != null && !response.getMessage().equals("")){
             System.out.println(response.getMessage());

@@ -5,20 +5,10 @@ import base.Vehicle;
 import collection.CollectionDirector;
 import connection.Connection;
 import connection.ReadingCommand;
-import connection.ReadingObject;
-import lombok.AllArgsConstructor;
-import lombok.extern.java.Log;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.nio.channels.SelectionKey;
-import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.Iterator;
 import java.util.PriorityQueue;
-import java.util.Properties;
-import java.util.Set;
 
 public class Main {
 
@@ -34,7 +24,7 @@ public class Main {
 
         new Admin().start();
 
-        ReadingObject readingCommand = new ReadingCommand(collectionDirector);
+        ReadingCommand readingCommand = new ReadingCommand(collectionDirector);
         Connection connection = new Connection(readingCommand);
         connection.connect();
         connection.interaction();
